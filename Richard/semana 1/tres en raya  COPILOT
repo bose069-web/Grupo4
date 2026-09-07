@@ -1,0 +1,64 @@
+def create_board():
+    return [[" " for _ in range(3)] for _ in range(3)]
+
+
+def print_board(board):
+    for row in board:
+        print(" | ".join(row))
+        print("-" * 9)
+
+def has_won(board, player):
+    lines = board + [
+        [board[row][column] for row in range(3)]
+        for column in range(3)
+    ]
+    lines += [
+        [board[index][index] for index in range(3)],
+        [board[index][2 - index] for index in range(3)],
+    ]
+    return any(all(cell == player for cell in line) for line in lines)
+
+
+def is_valid_move(board, row, column):
+    return 0 <= row < 3 and 0 <= column < 3 and board[row][column] == " "
+
+
+def get_move(player):
+    row = int(input(f"Player {player}, choose a row (0, 1, 2): "))
+    column = int(input(f"Player {player}, choose a column (0, 1, 2): "))
+    return row, column
+
+
+def switch_player(player):
+    return "O" if player == "X" else "X"
+
+
+def play_tic_tac_toe():
+    board = create_board()
+    current_player = "X"
+    moves = 0
+
+    while True:
+        print_board(board)
+        row, column = get_move(current_player)
+
+        if not is_valid_move(board, row, column):
+            print("Invalid move. Try again.")
+            continue
+
+        board[row][column] = current_player
+        moves += 1
+
+        if has_won(board, current_player):
+            print_board(board)
+            print(f"Player {current_player} wins!")
+            return True
+        if moves == 9:
+            print_board(board)
+            print("It's a draw!")
+            return False
+
+        current_player = switch_player(current_player)
+
+if __name__ == "__main__":
+    play_tic_tac_toe()

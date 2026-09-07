@@ -1,0 +1,175 @@
+Solo los tests. Van en `test_tic_tac_toe.py` y **importan** las funciones de `tic_tac_toe.py`; no las vuelvas a pegar.
+
+```python
+import io
+import unittest
+from unittest.mock import patch
+
+from tic_tac_toe import (
+    EMPTY,
+    SIZE,
+    game_over_message,
+    in_bounds,
+    is_empty,
+    is_full,
+    is_valid_move,
+    line_owned_by,
+    new_board,
+    next_player,
+    place,
+    print_board,
+    read_move,
+    winner,
+)
+
+
+def board_from(*rows):
+    return [list(row) for row in rows]
+
+
+class TestNewBoard(unittest.TestCase):
+    def test_size_and_empty_cells(self):
+        board = new_board()
+        self.assertEqual(len(board), SIZE)
+        self.assertTrue(all(len(row) == SIZE for row in board))
+        self.assertTrue(all(cell == EMPTY for row in board for cell in row))
+
+    def test_rows_are_independent(self):
+        board = new_board()
+        board[0][0] = "X"
+        self.assertEqual(board[1][0], EMPTY)
+
+
+class TestPrintBoard(unittest.TestCase):
+    def test_empty_board_layout(self):
+        output = io.StringIO()
+        with patch("sys.stdout", output):
+            print_board(new_board())
+        self.assertEqual(
+            output.getvalue(),
+            "  |   |  \n-----------\n  |   |  \n-----------\n  |   |  \n",
+        )
+
+
+class TestLineOwnedBy(unittest.TestCase):
+    def test_true_when_line_matches_player(self):
+        board = board_from("XXX", "   ", "   ")
+        self.assertTrue(line_owned_by(board, [(0, 0), (0, 1), (0, 2)], "X"))
+
+    def test_false_when_line_is_mixed(self):
+        board = board_from("XOX", "   ", "   ")
+        self.assertFalse(line_owned_by(board, [(0, 0), (0, 1), (0, 2)], "X"))
+
+
+class TestWinner(unittest.TestCase):
+    def test_no_winner_on_empty_board(self):
+        self.assertFalse(winner(new_board(), "X"))
+        self.assertFalse(winner(new_board(), "O"))
+
+    def test_row_win(self):
+        board = board_from("XXX", "O O", " O ")
+        self.assertTrue(winner(board, "X"))
+        self.assertFalse(winner(board, "O"))
+
+    def test_column_win(self):
+        board = board_from("XO ", "XO ", "X  ")
+        self.assertTrue(winner(board, "X"))
+
+    def test_main_diagonal_win(self):
+        board = board_from("X O", " X ", "O X")
+        self.assertTrue(winner(board, "X"))
+
+    def test_anti_diagonal_win(self):
+        board = board_from("O X", " X ", "X O")
+        self.assertTrue(winner(board, "X"))
+
+
+class TestIsFull(unittest.TestCase):
+    def test_empty_board_is_not_full(self):
+        self.assertFalse(is_full(new_board()))
+
+    def test_partial_board_is_not_full(self):
+        board = new_board()
+        place(board, 0, 0, "X")
+        self.assertFalse(is_full(board))
+
+    def test_filled_board_is_full(self):
+        board = board_from("XOX", "OXO", "XOX")
+        self.assertTrue(is_full(board))
+
+
+class TestBoundsAndEmpty(unittest.TestCase):
+    def test_in_bounds(self):
+        self.assertTrue(in_bounds(0, 0))
+        self.assertTrue(in_bounds(2, 2))
+        self.assertFalse(in_bounds(-1, 0))
+        self.assertFalse(in_bounds(0, 3))
+
+    def test_is_empty(self):
+        board = new_board()
+        self.assertTrue(is_empty(board, 1, 1))
+        place(board, 1, 1, "O")
+        self.assertFalse(is_empty(board, 1, 1))
+
+
+class TestIsValidMove(unittest.TestCase):
+    def test_empty_cell_is_valid(self):
+        self.assertTrue(is_valid_move(new_board(), 0, 0))
+
+    def test_occupied_cell_is_invalid(self):
+        board = new_board()
+        place(board, 0, 0, "X")
+        self.assertFalse(is_valid_move(board, 0, 0))
+
+    def test_out_of_bounds_is_invalid(self):
+        self.assertFalse(is_valid_move(new_board(), 3, 0))
+        self.assertFalse(is_valid_move(new_board(), 0, -1))
+
+
+class TestPlace(unittest.TestCase):
+    def test_writes_player_on_cell(self):
+        board = new_board()
+        place(board, 2, 1, "O")
+        self.assertEqual(board[2][1], "O")
+
+
+class TestNextPlayer(unittest.TestCase):
+    def test_switches_between_players(self):
+        self.assertEqual(next_player("X"), "O")
+        self.assertEqual(next_player("O"), "X")
+
+
+class TestReadMove(unittest.TestCase):
+    def test_returns_row_and_column(self):
+        with patch("builtins.input", side_effect=["1", "2"]):
+            self.assertEqual(read_move("X"), (1, 2))
+
+    def test_raises_on_non_numeric_input(self):
+        with patch("builtins.input", side_effect=["a", "0"]):
+            with self.assertRaises(ValueError):
+                read_move("O")
+
+
+class TestGameOverMessage(unittest.TestCase):
+    def test_none_while_game_continues(self):
+        board = board_from("XO ", "   ", "   ")
+        self.assertIsNone(game_over_message(board, "O"))
+
+    def test_win_message(self):
+        board = board_from("XXX", "OO ", "   ")
+        self.assertEqual(game_over_message(board, "X"), "Player X wins!")
+
+    def test_draw_message(self):
+        board = board_from("XOX", "XOX", "OXO")
+        self.assertEqual(game_over_message(board, "O"), "It's a draw!")
+
+    def test_win_takes_priority_over_full_board(self):
+        board = board_from("XXX", "OOX", "OOX")
+        self.assertEqual(game_over_message(board, "X"), "Player X wins!")
+
+
+if __name__ == "__main__":
+    unittest.main()
+```
+
+Los dos archivos tienen que estar en la misma carpeta. El juego no se toca.

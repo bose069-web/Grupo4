@@ -1,0 +1,403 @@
+in [] : import openai
+import os
+
+from dotenv import load_dotenv, find_dotenv
+_ = load_dotenv(find_dotenv())
+
+openai.api_key  = os.getenv('OPENAI_API_KEY')
+
+in [] : def get_completion(prompt, model="gpt-3.5-turbo"):
+    messages = [{"role": "user", "content": prompt}]
+    response = openai.ChatCompletion.create(
+        model=model,
+        messages=messages,
+        temperature=0, # this is the degree of randomness of the model's output
+    )
+    return response.choices[0].message["content"]
+
+1
+in [] : text = f"""
+hello world
+"""
+prompt = f"""
+show all the text
+```{text}```
+"""
+response = get_completion(prompt)
+print(response)
+
+Response chatGPT: Hello World
+Zemotron 3.5 lighting Response:  Hello World 
+2
+in[]: text = f"""
+hello world
+"""
+prompt = f"""
+show a similar text
+```{text}```
+"""
+response = get_completion(prompt)
+print(response)
+
+
+Response  chatGPT: Greetings Earth
+Zemotron 3.5 lighting Response: Here's a "Hello World" equivalent in Python:
+print("Hello, World!")
+Or in JavaScript:
+console.log("Hello, World!");
+
+
+
+
+
+
+
+3
+ in[] :	text = f"""
+hello world
+"""
+prompt = f"""
+continue the text showing how is the day going for marc /
+you need to start with the text given
+```{text}```
+"""
+response = get_completion(prompt)
+print(response)
+
+Response  chatGPT :hello world!
+Marc's day is going quite well so far.He woke up feeling refreshed and ready to tackle the day ahead.After a hearty breakfast,he headed to work where he had a productive morning,ticking off tasks from his to-do list. The sun is shining,and he's looking forward to a lunch break in the park.vOverall, it's shaping up to be a great day for Marc.
+
+Zemotron 3.5 lighting Response: hello world
+Marc's day is going splendidly! He woke up to golden sunlight streaming through his window, enjoyed a fresh cup of coffee while reviewing his priorities, and tackled his first task with enthusiasm. Mid-morning brought a pleasant surprise - an unexpected compliment from a colleague that brightened his entire morning. After a satisfying lunch break, he's currently working on a creative project that's really flowing. The afternoon holds promises of a walk in the park and perhaps some evening plans with friends. All in all, it's shaping up to be a wonderfully productive and enjoyable day for Marc.
+
+
+4
+ in []: text = f"""
+hello world!/
+Marc's day is going quite well so far./
+He woke up feeling refreshed and ready to tackle the day ahead./
+After a hearty breakfast,/
+he headed to work where he had a productive morning,/
+ticking off tasks from his to-do list. The sun is shining,/
+and he's looking forward to a lunch break in the park./
+Overall, it's shaping up to be a great day for Marc.
+"""
+prompt = f"""
+resume the text to 20 words
+```{text}```
+"""
+response = get_completion(prompt)
+print(response)
+
+Response  chatGPT: Marc is having a great day so far, feeling refreshed and productive at work with a sunny lunch break ahead.
+Zemotron 3.5 lighting Response: Marc woke to sunlight, coffee, tackled tasks with enthusiasm. Colleague's compliment brightened morning. After lunch, project flows. Afternoon walk, plans. 
+
+
+
+
+5
+in[]: text = f"""
+Ingredientes
+250 gramos de harina
+150 gramos de mantequilla
+150 gramos de azúcar
+5 huevos enteros
+1 cucharada copeteada de polvo para hornear
+1 cucharada de vainilla
+Preparación
+Precalienta el horno a 175º centígrados y engrasa y enharina un molde para hornear.
+Bate la mantequilla con el azúcar hasta que acreme y, sin dejar de batir, agrega uno por uno los huevos.
+Cierne la harina con el polvo para hornear en incorpóralo a la mezcla anterior y añade la vainilla.
+Vierte la masa dentro del molde y hornea hasta que pase la prueba del palillo, entre 35 y 45 minutos.
+"""
+prompt = f"""
+muestra el texto para seguir la receta paso a paso
+ en html
+```{text}```
+"""
+response = get_completion(prompt)
+print(response)
+
+Response chatGPT:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Receta de pastel</title>
+</head>
+<body>
+    <h1>Receta de pastel</h1>
+    <h2>Ingredientes</h2>
+    <ul>
+        <li>250 gramos de harina</li>
+        <li>150 gramos de mantequilla</li>
+        <li>150 gramos de azúcar</li>
+        <li>5 huevos enteros</li>
+        <li>1 cucharada copeteada de polvo para hornear</li>
+        <li>1 cucharada de vainilla</li>
+    </ul>
+    <h2>Preparación</h2>
+    <ol>
+        <li>Precalienta el horno a 175º centígrados y engrasa y enharina un molde para hornear.</li>
+        <li>Bate la mantequilla con el azúcar hasta que acreme y, sin dejar de batir, agrega uno por uno los huevos.</li>
+        <li>Cierne la harina con el polvo para hornear e incorpóralo a la mezcla anterior y añade la vainilla.</li>
+        <li>Vierte la masa dentro del molde y hornea hasta que pase la prueba del palillo, entre 35 y 45 minutos.</li>
+    </ol>
+</body>
+</html>
+
+Zemotron 3.5 lighting Response: <div class="receta">
+  <h2>Pastel de Vainilla</h2>
+
+  <h3>Ingredientes</h3>
+  <ul>
+    <li>250 gramos de harina</li>
+    <li>150 gramos de mantequilla</li>
+    <li>150 gramos de azúcar</li>
+    <li>5 huevos enteros</li>
+    <li>1 cucharada copeteada de polvo para hornear</li>
+    <li>1 cucharada de vainilla</li>
+  </ul>
+
+  <h3>Preparación</h3>
+  <ol>
+    <li>Precalienta el horno a 175ºC y engrasa y enharina un molde para hornear.</li>
+    <li>Bate la mantequilla con el azúcar hasta que acreme y, sin dejar de batir, agrega uno por uno los huevos.</li>
+    <li>Cierne la harina con el polvo para hornear e incorpóralo a la mezcla anterior y añade la vainilla.</li>
+    <li>Vierte la masa dentro del molde y hornea hasta que pase la prueba del palillo, entre 35 y 45 minutos.</li>
+  </ol>
+</div>
+
+
+
+
+
+
+6
+in[]: text = f"""
+Ingredientes
+250 gramos de harina
+150 gramos de mantequilla
+150 gramos de azúcar
+5 huevos enteros
+1 cucharada copeteada de polvo para hornear
+1 cucharada de vainilla
+Preparación
+Precalienta el horno a 175º centígrados y engrasa y enharina un molde para hornear.
+Bate la mantequilla con el azúcar hasta que acreme y, sin dejar de batir, agrega uno por uno los huevos.
+Cierne la harina con el polvo para hornear en incorpóralo a la mezcla anterior y añade la vainilla.
+Vierte la masa dentro del molde y hornea hasta que pase la prueba del palillo, entre 95 y 125 minutos.
+"""
+prompt = f"""
+dime si es correcta la receta
+```{text}```
+"""
+response = get_completion(prompt)
+print(response)
+
+Response chatGPT: La receta tiene un error en el tiempo de horneado, ya que 95 a 125 minutos es demasiado tiempo para un pastel. Lo correcto sería hornearlo entre 35 y 45 minutos, o hasta que al insertar un palillo en el centro salga limpio. Por lo demás, la receta parece estar correcta.
+
+Zemotron 3.5 lighting Response: Sí, la receta es correcta. Es un bizcocho/butter cake clásico con proporciones adecuadas:
+Relación mantequilla/azúcar equilibrada (1:1)
+5 huevos para 250g de harina le da buena estructura y humedad
+1 cucharada de polvo para hornear es la cantidad apropiada
+175°C es la temperatura estándar para este tipo de bizcocho
+Un par de observaciones:
+El tiempo de cocción (95-125 min) es largo, lo que indica que usas un molde grande/profundo. Asegúrate de que el molde no sea muy pequeño o la masa se desparramará.
+La vainilla (1 cucharada) es más bien generosa; si usas extracto concentrado, con 1 cucharadita podría ser suficiente.
+La instrucción "incorpóralo" debería ser "incorpórala" (refiriéndose a la harina, que es femenino).
+El método está bien descrito: el acremado, agregar huevos de uno en uno, y cernir los secos son pasos correctos para este tipo de preparación.
+
+
+7
+text = f"""
+X=5
+Y=3
+x=Y+2
+"""
+prompt = f"""
+dime si es correcta la respuesta, despues de haberla pensado tu i comparado con esta
+```{text}```
+"""
+response = get_completion(prompt)
+print(response)
+
+Response chatGPT:La respuesta es correcta. Al asignarle a X el valor de Y+2, se está asignando a X el valor de 3+2, por lo tanto X=5.
+Zemotron 3.5 lighting Response: No, es incorrecto en la mayoría de lenguajes de programación.
+Y = 3 (con Y mayúscula)
+x = y + 2 (con y minúscula)
+En lenguajes como Python, JavaScript, Java, etc., las variables son case-sensitive, así que Y y y son variables distintas. El código daría error porque y no está definida.
+Si fuera solo una convención matemática/académica (donde no distingue mayúsculas/minúsculas), sí sería correcto: 3 + 2 = 5.
+
+
+8
+in[]: text = f"""
+
+"""
+prompt = f"""
+enseña como se hace un pastel
+```{text}```
+"""
+response = get_completion(prompt)
+print(response)
+
+response chatGPT:Aquí tienes una receta básica para hacer un pastel:
+
+Ingredientes:
+- 2 tazas de harina
+- 1 taza de azúcar
+- 1 taza de leche
+- 1/2 taza de mantequilla derretida
+- 2 huevos
+- 2 cucharaditas de polvo de hornear
+- 1 cucharadita de esencia de vainilla
+
+Instrucciones:
+1. Precalienta el horno a 180°C y engrasa un molde para pastel.
+2. En un tazón grande, mezcla la harina, el azúcar y el polvo de hornear.
+3. En otro tazón, bate los huevos y luego agrega la leche, la mantequilla derretida y la esencia de vainilla.
+4. Incorpora la mezcla líquida a la mezcla de harina y azúcar, revolviendo hasta que esté bien combinado.
+5. Vierte la masa en el molde preparado y hornea durante aproximadamente 30-35 minutos, o hasta que al insertar un palillo en el centro salga limpio.
+6. Deja enfriar el pastel antes de desmoldar y decorar al gusto.
+
+¡Disfruta de tu delicioso pastel casero!
+Zemotron 3.5 lighting Response: **Pastel de Vainilla**
+
+**Ingredientes:**
+- 2 tazas harina de trigo
+- 1 taza azúcar
+- 4 huevos
+- 100 g mantequilla
+- 1 taza leche
+- 1 cucharadita vainilla
+- 1 cucharadita polvo de hornear
+
+**Preparación:**
+1. Mezcla mantequilla y azúcar hasta cremar.
+2. Agrega los huevos uno a uno.
+3. Incorpora la harina con el polvo de hornear alternando con la leche.
+4. Añade la vainilla y mezcla bien.
+5. Hornea a 180°C por 35–40 minutos.
+
+¿Quieres la variante de chocolate o algo más específico?
+
+
+
+
+
+
+9
+id[]: text = f"""
+ingles
+"""
+prompt = f"""
+enseña como se hace un pastel i traduce al idioma que indica el texto
+```{text}```
+"""
+response = get_completion(prompt)
+print(response)
+
+Response chatGPT: To make a cake, you will need the following ingredients: flour, sugar, eggs, butter, baking powder, vanilla extract, and milk. 
+
+Instructions:
+1. Preheat the oven to 350°F (180°C).
+2. In a mixing bowl, cream together the butter and sugar until light and fluffy.
+3. Add the eggs one at a time, mixing well after each addition.
+4. Stir in the vanilla extract.
+5. In a separate bowl, sift together the flour and baking powder.
+6. Gradually add the dry ingredients to the wet ingredients, alternating with the milk.
+7. Pour the batter into a greased cake pan and bake for 30-35 minutes, or until a toothpick inserted into the center comes out clean.
+8. Let the cake cool before frosting and serving.
+
+Spanish translation:
+Para hacer un pastel, necesitarás los siguientes ingredientes: harina, azúcar, huevos, mantequilla, polvo de hornear, extracto de vainilla y leche.
+
+Instrucciones:
+1. Precalienta el horno a 180°C (350°F).
+2. En un tazón, mezcla la mantequilla y el azúcar hasta que estén suaves y esponjosos.
+3. Agrega los huevos uno por uno, mezclando bien después de cada adición.
+4. Incorpora el extracto de vainilla.
+5. En otro tazón, tamiza la harina y el polvo de hornear.
+6. Agrega gradualmente los ingredientes secos a los ingredientes húmedos, alternando con la leche.
+7. Vierte la masa en un molde para pastel engrasado y hornea durante 30-35 minutos, o hasta que al insertar un palillo en el centro salga limpio.
+8. Deja que el pastel se enfríe antes de decorar y servir.
+Zemotron 3.5 lighting Response:
+
+## Pastel de Chocolate
+
+### Ingredientes:
+- 2 tazas de harina
+- 1 3/4 tazas de azúcar
+- 3/4 taza de cacao en polvo
+- 2 huevos
+- 1 taza de leche
+- 1/2 taza de aceite vegetal
+- 2 cucharaditas de polvo de hornear
+- 1 cucharadita de vainilla
+- 1/2 cucharadita de sal
+- 1 taza de agua hirviendo
+
+### Preparación:
+1. Precalentar el horno a 350°F (175°C). Engrasar y enharinar dos moldes para pastel.
+2. Mezclar los ingredientes secos en un tazón grande.
+3. Agregar los huevos, la leche, el aceite y la vainilla. Batir 2 minutos a velocidad media.
+4. Agregar el agua hirviendo y mezclar bien.
+5. Verter en los moldes y hornear 30-35 minutos.
+6. Dejar enfriar antes de decorar con glaseado.
+
+---
+
+## Chocolate Cake Recipe
+
+### Ingredients:
+- 2 cups flour
+- 1 3/4 cups sugar
+- 3/4 cup cocoa powder
+- 2 eggs
+- 1 cup milk
+- 1/2 cup vegetable oil
+- 2 teaspoons baking powder
+- 1 teaspoon vanilla extract
+- 1/2 teaspoon salt
+- 1 cup boiling water
+
+### Instructions:
+1. Preheat oven to 350°F (175°C). Grease and flour two cake pans.
+2. Mix dry ingredients in a large bowl.
+3. Add eggs, milk, oil, and vanilla. Beat at medium speed for 2 minutes.
+4. Stir in boiling water and mix well.
+5. Pour into prepared pans and bake 30-35 minutes.
+6. Cool before frosting with your favorite icing.
+
+
+
+
+10
+
+In[]: text = f"""
+ingles
+"""
+prompt = f"""
+enseña como se hace un pastel i traduce al idioma que indica el texto, i dejalo resumido en unas 70 palabras
+```{text}```
+"""
+response = get_completion(prompt)
+print(response)
+
+Response chatGPT: To make a cake, start by preheating the oven to the temperature indicated in the recipe. Then, mix together the dry ingredients in one bowl and the wet ingredients in another. Gradually combine the two mixtures until smooth. Pour the batter into a greased cake pan and bake for the specified time. Let it cool before frosting and serving.
+
+Resumen en español:
+Para hacer un pastel, primero precalienta el horno a la temperatura indicada en la receta. Luego, mezcla los ingredientes secos en un tazón y los ingredientes húmedos en otro. Combina gradualmente las dos mezclas hasta que quede suave. Vierte la masa en un molde engrasado y hornea por el tiempo especificado. Deja enfriar antes de decorar y servir.
+Zemotron 3.5 lighting Response: **Simple Vanilla Cake**
+
+Preheat oven to 350°F. Mix 2 cups flour, 1½ cups sugar, 2 tsp baking powder, and ½ tsp salt. Add 2 eggs, 1 cup milk, ½ cup melted butter, and 2 tsp vanilla extract. Beat until smooth. Pour into greased 9x13 pan. Bake 25-30 minutes until golden. Cool before frosting with your favorite icing. Enjoy your homemade vanilla cake!
+
+
+
+
+
+
+
+
+
+En conclusión el modelo GPT 3.5 Turbo hacia los prompts de forma mucho más veloz , si trataban de números no los enlazaba con la programación de forma directa y también hace de forma un poco más elavorada las peticiones que el Zemotron 3.5 lighting Response.

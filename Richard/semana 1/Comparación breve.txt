@@ -1,0 +1,1 @@
+Para aprender lo básico, elegiría COPILOT por su simplicidad pero para un proyecto mantenible y ampliable, elegiría CURSOR ya que CURSOR tiene mejor diseño y es mas eficiente, mientras que COPILOT tiene una interfaz más simple y fácil de entender, pero menos eficiente.

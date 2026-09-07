@@ -1,0 +1,90 @@
+SIZE = 3
+EMPTY = " "
+PLAYERS = ("X", "O")
+
+ROWS = [[(r, c) for c in range(SIZE)] for r in range(SIZE)]
+COLS = [[(r, c) for r in range(SIZE)] for c in range(SIZE)]
+DIAGS = [[(i, i) for i in range(SIZE)], [(i, SIZE - 1 - i) for i in range(SIZE)]]
+WIN_LINES = ROWS + COLS + DIAGS
+
+
+def new_board():
+    return [[EMPTY] * SIZE for _ in range(SIZE)]
+
+
+def print_board(board):
+    divider = "-" * (SIZE * 4 - 1)
+    for i, row in enumerate(board):
+        print(" | ".join(row))
+        if i < SIZE - 1:
+            print(divider)
+
+
+def line_owned_by(board, line, player):
+    return all(board[r][c] == player for r, c in line)
+
+
+def winner(board, player):
+    return any(line_owned_by(board, line, player) for line in WIN_LINES)
+
+
+def is_full(board):
+    return all(cell != EMPTY for row in board for cell in row)
+
+
+def in_bounds(row, col):
+    return 0 <= row < SIZE and 0 <= col < SIZE
+
+
+def is_empty(board, row, col):
+    return board[row][col] == EMPTY
+
+
+def is_valid_move(board, row, col):
+    return in_bounds(row, col) and is_empty(board, row, col)
+
+
+def place(board, row, col, player):
+    board[row][col] = player
+
+
+def next_player(player):
+    return PLAYERS[1 - PLAYERS.index(player)]
+
+
+def read_move(player):
+    row = int(input(f"Player {player}, choose a row (0-{SIZE - 1}): "))
+    col = int(input(f"Player {player}, choose a column (0-{SIZE - 1}): "))
+    return row, col
+
+
+def game_over_message(board, player):
+    if winner(board, player):
+        return f"Player {player} wins!"
+    if is_full(board):
+        return "It's a draw!"
+    return None
+
+
+def play():
+    board = new_board()
+    player = PLAYERS[0]
+    while True:
+        print_board(board)
+        try:
+            row, col = read_move(player)
+        except ValueError:
+            print("Invalid input. Try again.")
+            continue
+        if not is_valid_move(board, row, col):
+            print("Invalid move. Try again.")
+            continue
+        place(board, row, col, player)
+        message = game_over_message(board, player)
+        if message:
+            print_board(board)
+            print(message)
+            break
+        player = next_player(player)
+if __name__ == "__main__":
+    play()
