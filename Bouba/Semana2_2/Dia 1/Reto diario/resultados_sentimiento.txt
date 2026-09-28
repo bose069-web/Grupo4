@@ -1,0 +1,14 @@
+Aquí tienes la tabla con el análisis de los 10 textos solicitados:
+
+| Texto | Sentimiento | Entidades detectadas | Explicación breve |
+| :--- | :--- | :--- | :--- |
+| 1. Estoy muy contento con el resultado del proyecto. | Positivo | Proyecto | Expresa felicidad y satisfacción directa con el desenlace de un proyecto. |
+| 2. La experiencia ha sido terrible y decepcionante. | Negativo | Experiencia | Utiliza adjetivos fuertes ("terrible", "decepcionante") para calificar una vivencia de forma muy desfavorable. |
+| 3. Hoy es lunes y tengo una reunión a las 10. | Neutro | Lunes, Reunión (10:00) | Es una afirmación objetiva sobre un día de la semana y un evento en la agenda, sin carga emocional. |
+| 4. El equipo hizo un trabajo excelente. | Positivo | Equipo, Trabajo | Elogia explícitamente el desempeño y la labor realizada por un grupo de personas. |
+| 5. No me gustó el servicio recibido. | Negativo | Servicio | Manifiesta insatisfacción y desaprobación hacia la atención prestada. |
+| 6. I am very happy with this product. | Positivo | Producto (Product) | Expresa alegría y alta satisfacción con la adquisición o uso de un producto. |
+| 7. The experience was awful and frustrating. | Negativo | Experiencia (Experience) | Califica la vivencia con términos negativos que denotan malestar y frustración. |
+| 8. Today is a normal working day. | Neutro | Día laborable (Working day) | Describe una situación cotidiana y rutinaria sin emitir juicios de valor. |
+| 9. The team delivered outstanding results. | Positivo | Equipo (Team), Resultados (Results) | Destaca el éxito y la alta calidad del trabajo entregado por el equipo. |
+| 10. I am disappointed with the support. | Negativo | Soporte (Support) | Muestra descontento y falta de expectativa cumplida respecto al servicio de asistencia técnica o atención al cliente. |
