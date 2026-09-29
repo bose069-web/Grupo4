@@ -1,0 +1,14 @@
+Aquí tienes la tabla con el análisis de sentimiento, las entidades detectadas y la explicación breve para cada uno de los textos proporcionados:
+
+| Texto | Sentimiento | Entidades detectadas | Explicación breve |
+| :--- | :--- | :--- | :--- |
+| "Me encanta Madrid y estoy muy contento con el viaje." | Positivo | Madrid | Expresa una emoción clara de alegría y afecto hacia un lugar. |
+| "El servicio de esta empresa ha sido horrible." | Negativo | Ninguna explícita | Utiliza un adjetivo altamente descalificativo ("horrible") para calificar el servicio. |
+| "Microsoft presentó un nuevo producto en Madrid." | Neutro | Microsoft, Madrid | Es una oración informativa que describe un evento sin emitir juicios de valor. |
+| "Estoy muy satisfecho con mi nuevo ordenador Lenovo." | Positivo | Lenovo | Muestra satisfacción personal con la compra de un producto de una marca específica. |
+| "El retraso del vuelo de Iberia ha sido frustrante." | Negativo | Iberia | Describe una experiencia negativa y genera un sentimiento de frustración. |
+| "I love visiting London during the summer." | Positivo | London (Londres) | Manifiesta un fuerte agrado ("love") por visitar una ciudad en una estación específica. |
+| "The customer service at Amazon was terrible." | Negativo | Amazon | Califica el servicio al cliente de la compañía como pésimo. |
+| "Microsoft announced a new product in Seattle." | Neutro | Microsoft, Seattle | Aporta un hecho noticioso o informativo sin carga emocional subjetiva. |
+| "My new Lenovo laptop works perfectly." | Positivo | Lenovo | Alaba el funcionamiento óptimo de un dispositivo de la marca. |
+| "The flight delay at Heathrow was disappointing." | Negativo | Heathrow | Expresa decepción ante un inconveniente de viaje (retraso en el aeropuerto). |
