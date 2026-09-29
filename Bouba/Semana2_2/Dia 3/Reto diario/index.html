@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transcripcion de audio</title>
+  <style>
+    :root { font-family: system-ui, sans-serif; color: #17202a; background: #eef3f7; }
+    body { max-width: 860px; margin: 0 auto; padding: 32px 18px; }
+    main { background: white; border: 1px solid #d7e0e8; border-radius: 10px; padding: 26px; box-shadow: 0 8px 24px #17324d12; }
+    h1 { margin-top: 0; color: #174a68; }
+    label { display: block; margin: 18px 0 8px; font-weight: 700; }
+    button { margin-top: 18px; padding: 10px 18px; border: 0; border-radius: 6px; color: white; background: #176b87; cursor: pointer; }
+    button.secundario { background: #52616b; }
+    button.grabando { background: #b23a48; }
+    button:disabled { opacity: .55; cursor: wait; }
+    #estado { min-height: 1.4em; color: #52616b; }
+    #temporizador { display: inline-block; margin-left: 10px; color: #b23a48; font-variant-numeric: tabular-nums; }
+    #resultado { white-space: pre-wrap; padding: 14px; min-height: 50px; background: #f4f7f9; border-left: 4px solid #f0a202; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { border: 1px solid #d7e0e8; padding: 9px; text-align: left; }
+    th { background: #e9f1f5; }
+    .arquitectura { background: #f4f7f9; padding: 12px 16px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Transcripcion de audio</h1>
+    <p>Selecciona un audio en espanol y envialo a Gemini mediante el backend Flask.</p>
+    <label for="audio">Archivo de audio</label>
+    <input id="audio" type="file" accept="audio/*">
+    <br>
+    <button id="transcribir" type="button">Transcribir</button>
+    <h2>Hablar y transcribir</h2>
+    <button id="grabar" class="secundario" type="button">Iniciar grabacion</button>
+    <span id="temporizador">00:00</span>
+    <p id="estado" role="status"></p>
+    <h2>Resultado</h2>
+    <div id="resultado">Aun no hay ninguna transcripcion.</div>
+
+    <h2>Arquitectura de red</h2>
+    <p class="arquitectura">Navegador -&gt; POST /transcribir (multipart/form-data) -&gt; Flask -&gt; API Gemini -&gt; Flask -&gt; JSON -&gt; navegador.</p>
+
+    <h2>Comparativa</h2>
+    <table>
+      <thead><tr><th>Caracteristica</th><th>Web Speech API</th><th>Gemini</th></tr></thead>
+      <tbody>
+        <tr><td>Tiempo real</td><td>Si</td><td>No, procesa por lotes</td></tr>
+        <tr><td>Precision</td><td>Media</td><td>Alta</td></tr>
+        <tr><td>Entorno</td><td>Solo navegador compatible</td><td>Backend con API key</td></tr>
+        <tr><td>Audios largos</td><td>Limitados</td><td>Mejor soporte</td></tr>
+        <tr><td>Ventaja principal</td><td>Respuesta inmediata</td><td>Transcripcion mas precisa</td></tr>
+      </tbody>
+    </table>
+  </main>
+  <script>
+    const selector = document.querySelector('#audio');
+    const boton = document.querySelector('#transcribir');
+    const botonGrabar = document.querySelector('#grabar');
+    const estado = document.querySelector('#estado');
+    const resultado = document.querySelector('#resultado');
+    const temporizador = document.querySelector('#temporizador');
+    let grabadora;
+    let fragmentos = [];
+    let inicioGrabacion;
+    let reloj;
+
+    function actualizarTemporizador() {
+      const segundos = Math.floor((Date.now() - inicioGrabacion) / 1000);
+      const minutos = String(Math.floor(segundos / 60)).padStart(2, '0');
+      temporizador.textContent = `${minutos}:${String(segundos % 60).padStart(2, '0')}`;
+    }
+
+    async function enviarAudio(archivo) {
+      const datos = new FormData();
+      datos.append('audio', archivo);
+      estado.textContent = 'Transcribiendo...';
+      const respuesta = await fetch('/transcribir', { method: 'POST', body: datos });
+      const cuerpo = await respuesta.json();
+      if (!respuesta.ok) throw new Error(cuerpo.error || 'Error desconocido');
+      resultado.textContent = cuerpo.transcripcion;
+      estado.textContent = 'Transcripcion completada.';
+    }
+
+    boton.addEventListener('click', async () => {
+      if (!selector.files.length) {
+        estado.textContent = 'Selecciona un archivo primero.';
+        return;
+      }
+      boton.disabled = true;
+      try {
+        await enviarAudio(selector.files[0]);
+      } catch (error) {
+        resultado.textContent = '';
+        estado.textContent = `Error: ${error.message}`;
+      } finally {
+        boton.disabled = false;
+      }
+    });
+
+    botonGrabar.addEventListener('click', async () => {
+      if (grabadora && grabadora.state === 'recording') {
+        grabadora.stop();
+        return;
+      }
+
+      if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder) {
+        estado.textContent = 'Este navegador no permite grabar audio.';
+        return;
+      }
+
+      try {
+        const microfono = await navigator.mediaDevices.getUserMedia({ audio: true });
+        const tipo = MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
+          ? 'audio/webm;codecs=opus'
+          : 'audio/webm';
+        grabadora = new MediaRecorder(microfono, { mimeType: tipo });
+        fragmentos = [];
+        grabadora.ondataavailable = (evento) => {
+          if (evento.data.size) fragmentos.push(evento.data);
+        };
+        grabadora.onstop = async () => {
+          clearInterval(reloj);
+          temporizador.textContent = '00:00';
+          microfono.getTracks().forEach((pista) => pista.stop());
+          botonGrabar.disabled = true;
+          try {
+            const audioGrabado = new Blob(fragmentos, { type: 'audio/webm' });
+            await enviarAudio(new File([audioGrabado], 'voz.webm', { type: 'audio/webm' }));
+          } catch (error) {
+            resultado.textContent = '';
+            estado.textContent = `Error: ${error.message}`;
+          } finally {
+            botonGrabar.disabled = false;
+            botonGrabar.textContent = 'Iniciar grabacion';
+            botonGrabar.classList.remove('grabando');
+          }
+        };
+        grabadora.start();
+        inicioGrabacion = Date.now();
+        reloj = setInterval(actualizarTemporizador, 1000);
+        botonGrabar.textContent = 'Detener grabacion';
+        botonGrabar.classList.add('grabando');
+        estado.textContent = 'Grabando desde el microfono...';
+      } catch (error) {
+        estado.textContent = `No se pudo acceder al microfono: ${error.message}`;
+      }
+    });
+  </script>
+</body>
+</html>
