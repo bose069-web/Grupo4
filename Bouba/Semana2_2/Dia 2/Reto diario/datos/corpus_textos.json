@@ -1,0 +1,174 @@
+{
+  "descripcion": "Corpus de 10 textos de ejemplo (noticias, resenas, emails) en 5 idiomas con etiquetas de referencia (gold) para medir la precision de Gemini.",
+  "campos_gold": {
+    "idioma": "Codigo ISO 639-1 esperado",
+    "sentimiento": "positivo | negativo | neutro",
+    "entidades": "Entidades nombradas clave presentes en el texto",
+    "resumen": "Resumen de referencia en espanol de una frase"
+  },
+  "textos": [
+    {
+      "id": "T01",
+      "categoria": "noticia",
+      "texto": "El Banco Central de Espana publico este lunes un informe que confirma la desaceleracion economica del primer trimestre. La inflacion se situo en el 2,1%, dos puntos por debajo del objetivo, y el crecimiento del PIB fue del 0,3% trimestral segun el Instituto Nacional de Estadistica. Madrid, Barcelona y Valencia concentran el 40% de la actividad productiva nacional. El ministro de Economia, Gaspar Martinez, afirmo que el Gobierno aplicara estimulos fiscales en el ultimo trimestre.",
+      "gold": {
+        "idioma": "es",
+        "sentimiento": "neutro",
+        "entidades": [
+          "Banco Central de Espana",
+          "Instituto Nacional de Estadistica",
+          "Madrid",
+          "Barcelona",
+          "Valencia",
+          "Gaspar Martinez"
+        ],
+        "resumen": "El Banco Central de Espana confirma la desaceleracion del primer trimestre, con inflacion del 2,1% y crecimiento del PIB del 0,3%, y el Gobierno aplicara estimulos fiscales en el ultimo trimestre."
+      }
+    },
+    {
+      "id": "T02",
+      "categoria": "noticia",
+      "texto": "Nvidia reported record quarterly revenue of 46.1 billion dollars, driven by surging demand for artificial intelligence chips. Chief Executive Officer Jensen Huang said the company plans to double its data center investment over the next two years. Competitors AMD and Intel lost ground in the market, while Microsoft and Amazon confirmed orders worth billions of dollars. Shares rose 8% in after-hours trading on Wall Street.",
+      "gold": {
+        "idioma": "en",
+        "sentimiento": "positivo",
+        "entidades": [
+          "Nvidia",
+          "Jensen Huang",
+          "AMD",
+          "Intel",
+          "Microsoft",
+          "Amazon",
+          "Wall Street"
+        ],
+        "resumen": "Nvidia registro ingresos records de 46.100 millones de dolares por la demanda de chips de IA, duplicara su inversion en centros de datos y sus acciones subieron un 8% en Wall Street."
+      }
+    },
+    {
+      "id": "T03",
+      "categoria": "resena",
+      "texto": "Compre este portatil hace tres semanas y la experiencia ha sido desastrosa. La bateria se degrada un 30% en apenas diez dias, el teclado se despego en la esquina izquierda y el servicio tecnico de MediaMarkt me ha tenido esperando el doble de lo prometido. Ni siquiera han cambiado el producto. Lo devuelvo manana mismo: es el peor portatil que he comprado en diez anos.",
+      "gold": {
+        "idioma": "es",
+        "sentimiento": "negativo",
+        "entidades": [
+          "MediaMarkt"
+        ],
+        "resumen": "El cliente devuelve un portatil con bateria degradada, teclado despegado y lentitud del servicio tecnico de MediaMarkt, tras una experiencia que califica de desastrosa."
+      }
+    },
+    {
+      "id": "T04",
+      "categoria": "resena",
+      "texto": "I absolutely loved the new season of Severance. The performances from Adam Scott and Britt Lower are phenomenal, and director Dan Erickson finally nails the tone he was aiming for. Apple TV+ handled the international distribution brilliantly. A few episodes drag in the middle, but the finale is worth every minute of the wait. Easily the best show on television this year.",
+      "gold": {
+        "idioma": "en",
+        "sentimiento": "positivo",
+        "entidades": [
+          "Severance",
+          "Adam Scott",
+          "Britt Lower",
+          "Dan Erickson",
+          "Apple TV+"
+        ],
+        "resumen": "El usuario elogia la nueva temporada de Severance por sus actuaciones y el trabajo del director Dan Erickson, con una distribucion internacionalhandled por Apple TV+, aunque algunos capitulos se alargan."
+      }
+    },
+    {
+      "id": "T05",
+      "categoria": "email",
+      "texto": "Asunto: Solicitud de vacaciones aprobada - 14 al 25 de julio. Hola Marta, te escribo para confirmar las vacaciones que solicite en junio. Mi supervisor Carlos Delgado ya lo ha validado y el equipo de soporte queda cubierto por Lucia Ferrer. Adjunto el calendario actualizado del proyecto Atlas para que lo revises. Gracias de antemano por la gestion. Un saludo, Andres Molina.",
+      "gold": {
+        "idioma": "es",
+        "sentimiento": "neutro",
+        "entidades": [
+          "Marta",
+          "Carlos Delgado",
+          "Lucia Ferrer",
+          "Atlas"
+        ],
+        "resumen": "Andres Molina confirma a Marta sus vacaciones del 14 al 25 de julio, validadas por su supervisor Carlos Delgado y con Lucia Ferrer cubriendo el soporte, y adjunta el calendario del proyecto Atlas."
+      }
+    },
+    {
+      "id": "T06",
+      "categoria": "email",
+      "texto": "Subject: Contract renewal - urgent action needed. Dear Ms. Fitzgerald, our records show that the service agreement with Northwind Traders expired on March 31st. To avoid interruption of your account, we need a signed renewal before April 15th. Please review the attached terms and reach out to your account manager Priya Raman if you have questions. Thank you for your continued partnership.",
+      "gold": {
+        "idioma": "en",
+        "sentimiento": "neutro",
+        "entidades": [
+          "Ms. Fitzgerald",
+          "Northwind Traders",
+          "Priya Raman"
+        ],
+        "resumen": "Se avisa a Ms. Fitzgerald de que el acuerdo de servicio con Northwind Traders caduco el 31 de marzo y hace falta una renovacion firmada antes del 15 de abril para evitar cortes en su cuenta."
+      }
+    },
+    {
+      "id": "T07",
+      "categoria": "noticia",
+      "texto": "Le Centre national du cinema annonce une hausse de 12% des entrees dans les salles francaises. Selon le rapport publie ce mardi, des films comme Le Comte de Monte-Cristo et Emilia Perez ont domine le box-office, suivis des productions de Miyazaki sorties en France par Pathe. La fermeture de seize cinemas ruraux depuis 2023 continue toutefois de penaliser les regions rurales, selon l'INSEE.",
+      "gold": {
+        "idioma": "fr",
+        "sentimiento": "neutro",
+        "entidades": [
+          "Centre national du cinema",
+          "Le Comte de Monte-Cristo",
+          "Emilia Perez",
+          "Miyazaki",
+          "Pathe",
+          "INSEE"
+        ],
+        "resumen": "El Centro Nacional de Cine frances anuncia una subida del 12% de las entradas en cines, con Le Comte de Monte-Cristo y Emilia Perez liderando el box-office, mientras el cierre de cines rurales penaliza a las regiones rurales."
+      }
+    },
+    {
+      "id": "T08",
+      "categoria": "resena",
+      "texto": "Das neue BMW Modell i4 ist ein fantastisches Auto. Die Fahrdynamik ist uberraschend sportlich, der Innenraum ist luxuros und die Reichweite von 510 Kilometern reicht fur meine Wochenendfahrten nach Muenchen vollkommen aus. Der Preis ist allerdings hoch, und der Sprachassistent von BMW hat mehrfach den Wetterbericht vorgelesen statt zu navigieren. Trotzdem bin ich sehr zufrieden mit dem Kauf bei BMW Muenchen.",
+      "gold": {
+        "idioma": "de",
+        "sentimiento": "positivo",
+        "entidades": [
+          "BMW",
+          "BMW Muenchen"
+        ],
+        "resumen": "El propietario valora muy positivamente el BMW i4 por su dinamica esportiva, su interior lujoso y su autonomia de 510 km, aunque critica el precio alto y el asistente que no navega bien y comprueba en BMW Munich."
+      }
+    },
+    {
+      "id": "T09",
+      "categoria": "email",
+      "texto": "Hi team, quick heads-up: the production server crashed again last night and we lost about 400 orders from Shopify. The root cause was a memory leak in the checkout module, not the database like we first assumed. I've rolled back the deploy and added an alert. Can someone from the platform group review the postmortem in Confluence before Thursday? Sorry for the noise.",
+      "gold": {
+        "idioma": "en",
+        "sentimiento": "negativo",
+        "entidades": [
+          "Shopify",
+          "Confluence"
+        ],
+        "resumen": "Un correo avisa de que el servidor de produccion se cayo otra vez y se perdieron unos 400 pedidos de Shopify por una fuga de memoria en el modulo de checkout, ya revertida, y pide revisar el postmortem en Confluence antes del jueves."
+      }
+    },
+    {
+      "id": "T10",
+      "categoria": "noticia",
+      "texto": "Google presento en Mountain View su nuevo modelo de IA generativa, que multiplica por cuatro la velocidad de respuesta y reduce un 60% el consumo energetico del centro de datos. La compania, fundada por Larry Page y Sergey Brin en 1998, afirma que el modelo ya lo usan OpenAI, Deutsche Telekom y el Hospital General de Valencia en sus procesos internos.",
+      "gold": {
+        "idioma": "es",
+        "sentimiento": "positivo",
+        "entidades": [
+          "Google",
+          "Mountain View",
+          "Larry Page",
+          "Sergey Brin",
+          "OpenAI",
+          "Deutsche Telekom",
+          "Hospital General de Valencia"
+        ],
+        "resumen": "Google presento en Mountain View un modelo de IA generativa cuatro veces mas rapido y con un 60% menos de consumo energetico, ya usado por OpenAI, Deutsche Telekom y el Hospital General de Valencia."
+      }
+    }
+  ]
+}

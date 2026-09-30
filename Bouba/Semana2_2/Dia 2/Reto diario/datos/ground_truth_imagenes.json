@@ -1,0 +1,82 @@
+{
+  "descripcion": "Ground truth visual de las 5 imagenes reales de prueba. Permite medir la precision de OCR, descripcion, clasificacion de escena y deteccion de objetos contra una referencia conocida.",
+  "campos": {
+    "escena_esperada": "Clase de escena esperada, de las 9 del esquema.",
+    "objetos_esperados": "Objetos que se esperan encontrar. Antes de comparar se unifican plurales y sinonimos (ver comun.SINONIMOS_OBJETOS).",
+    "texto_esperado": "Fragmentos de texto que deben leerse. Lista vacia = la imagen NO tiene texto, y lo que se evalua es que el modelo no se invente texto.",
+    "conceptos_descripcion": "Conceptos clave de una descripcion correcta. Cada concepto lleva variantes admitidas para no penalizar sinonimos ('tocino' cuenta como 'bacon')."
+  },
+  "imagenes": [
+    {
+      "archivo": "01_teatro_griego_taormina.jpg",
+      "tipo": "foto de paisaje con monumento",
+      "escena_esperada": "paisaje",
+      "objetos_esperados": ["anfiteatro", "edificios", "arboles", "mar", "playa", "nubes"],
+      "texto_esperado": [],
+      "conceptos_descripcion": [
+        {"concepto": "anfiteatro", "variantes": ["anfiteatro", "teatro", "ruinas", "romano", "arqueologico"]},
+        {"concepto": "mar", "variantes": ["mar", "oceano", "mediterraneo"]},
+        {"concepto": "playa", "variantes": ["playa", "costa", "litoral"]},
+        {"concepto": "cerro con edificios", "variantes": ["colina", "cerro", "ladera", "edificios", "pueblo", "caserio"]},
+        {"concepto": "panoramica", "variantes": ["panoramica", "panoramico", "horizontal", "vista", "general"]}
+      ]
+    },
+    {
+      "archivo": "02_tipos_fracturas_hueso.jpg",
+      "tipo": "diagrama medico con etiquetas",
+      "escena_esperada": "grafico",
+      "objetos_esperados": ["huesos", "femur", "rotula", "etiquetas", "flechas", "imagenes medicas"],
+      "texto_esperado": ["Normal", "Transverse", "Oblique", "Spiral", "Comminuted", "Impacted", "Segmental", "Torus", "Greenstick"],
+      "conceptos_descripcion": [
+        {"concepto": "fracturas", "variantes": ["fractura", "fracturas", "oseas", "lesiones"]},
+        {"concepto": "hueso", "variantes": ["hueso", "huesos", "femur", "femoral", "femorales"]},
+        {"concepto": "diagrama", "variantes": ["diagrama", "esquema", "ilustracion", "figura"]},
+        {"concepto": "tipos", "variantes": ["tipos", "tipo", "clases", "patologia", "variantes"]},
+        {"concepto": "medico", "variantes": ["medico", "medica", "clinico", "radiologia", "osteologia", "sanitario"]}
+      ]
+    },
+    {
+      "archivo": "03_perro_pastor_aleman.jpg",
+      "tipo": "foto de animal",
+      "escena_esperada": "animal",
+      "objetos_esperados": ["perro", "hierba", "exterior"],
+      "texto_esperado": [],
+      "conceptos_descripcion": [
+        {"concepto": "perro", "variantes": ["perro", "perros", "pastor", "aleman", "canino", "animal"]},
+        {"concepto": "echado", "variantes": ["echado", "echada", "tumbado", "acostado", "recostado", "posando"]},
+        {"concepto": "hierba", "variantes": ["hierba", "cesped", "pasto", "prado", "verde"]},
+        {"concepto": "exterior", "variantes": ["exterior", "aire libre", "al aire libre", "jardin", "parque", "campo"]},
+        {"concepto": "pelaje", "variantes": ["pelaje", "marron", "negro", "color", "tono"]}
+      ]
+    },
+    {
+      "archivo": "04_hamburguesa.jpg",
+      "tipo": "producto / comida",
+      "escena_esperada": "producto",
+      "objetos_esperados": ["hamburguesa", "pan", "carne", "queso", "bacon", "lechuga", "tomate", "salsa"],
+      "texto_esperado": [],
+      "conceptos_descripcion": [
+        {"concepto": "hamburguesa", "variantes": ["hamburguesa", "burger", "bocadillo", "comida", "gastronomica"]},
+        {"concepto": "pan", "variantes": ["pan", "miga", "panaderia"]},
+        {"concepto": "carne", "variantes": ["carne", "filete", "hamburguesa de carne", "burger"]},
+        {"concepto": "queso", "variantes": ["queso", "cheddar", "fundido", "derretido"]},
+        {"concepto": "bacon", "variantes": ["bacon", "tocino", "panceta", "crujiente"]},
+        {"concepto": "lechuga", "variantes": ["lechuga", "ensalada", "verde"]}
+      ]
+    },
+    {
+      "archivo": "05_molecula_3d.jpg",
+      "tipo": "render 3D / ilustracion",
+      "escena_esperada": "otro",
+      "objetos_esperados": ["molecula", "esferas", "burbujas", "modelo 3d"],
+      "texto_esperado": ["pngtree", "PNG"],
+      "conceptos_descripcion": [
+        {"concepto": "molecula", "variantes": ["molecula", "moleculas", "atomos", "modelo"]},
+        {"concepto": "3d", "variantes": ["3d", "tridimensional", "render", "volumetrico"]},
+        {"concepto": "azul", "variantes": ["azul", "azules", "cian"]},
+        {"concepto": "esferas", "variantes": ["esferas", "bolas", "burbujas", "nucleo", "esfericas"]},
+        {"concepto": "ciencia", "variantes": ["ciencia", "cientifico", "quimica", "biologico", "ilustracion", "diseno"]}
+      ]
+    }
+  ]
+}

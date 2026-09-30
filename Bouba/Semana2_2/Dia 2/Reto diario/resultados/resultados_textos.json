@@ -1,0 +1,1579 @@
+{
+  "meta": {
+    "tarea": "analisis de texto",
+    "modelo": "models/gemini-3.5-flash-lite",
+    "fecha": "2026-09-30T11:39:33",
+    "corpus": "corpus_textos.json"
+  },
+  "metricas": {
+    "global": {
+      "textos_analizados": 10,
+      "textos_con_error": 0,
+      "accuracy_idioma": 1.0,
+      "accuracy_sentimiento": 0.8,
+      "f1_entidades": 0.7798700000000001,
+      "f1_resumen": 0.47661,
+      "similitud_resumen": 0.46413000000000004,
+      "tasa_compresion": 0.40681,
+      "segundos_medio": 20.637999999999998
+    },
+    "por_categoria": {
+      "email": {
+        "n": 3,
+        "accuracy_idioma": 1.0,
+        "accuracy_sentimiento": 1.0,
+        "f1_entidades": 0.7591,
+        "f1_resumen": 0.6199333333333333
+      },
+      "noticia": {
+        "n": 4,
+        "accuracy_idioma": 1.0,
+        "accuracy_sentimiento": 0.5,
+        "f1_entidades": 0.820825,
+        "f1_resumen": 0.48595
+      },
+      "resena": {
+        "n": 3,
+        "accuracy_idioma": 1.0,
+        "accuracy_sentimiento": 1.0,
+        "f1_entidades": 0.7460333333333334,
+        "f1_resumen": 0.32083333333333336
+      }
+    },
+    "por_texto": [
+      {
+        "id": "T01",
+        "categoria": "noticia",
+        "idioma_ok": true,
+        "idioma": "es/es",
+        "sentimiento_ok": true,
+        "sentimiento": "neutro/neutro",
+        "entidades_f1": 0.75,
+        "entidades_esperadas": 6,
+        "entidades_predichas": 10,
+        "resumen_f1": 0.5,
+        "resumen_similitud": 0.6427,
+        "compresion": 0.3766,
+        "segundos": 17.05
+      },
+      {
+        "id": "T02",
+        "categoria": "noticia",
+        "idioma_ok": true,
+        "idioma": "en/en",
+        "sentimiento_ok": true,
+        "sentimiento": "positivo/positivo",
+        "entidades_f1": 1.0,
+        "entidades_esperadas": 7,
+        "entidades_predichas": 7,
+        "resumen_f1": 0.4516,
+        "resumen_similitud": 0.6141,
+        "compresion": 0.4328,
+        "segundos": 21.37
+      },
+      {
+        "id": "T03",
+        "categoria": "resena",
+        "idioma_ok": true,
+        "idioma": "es/es",
+        "sentimiento_ok": true,
+        "sentimiento": "negativo/negativo",
+        "entidades_f1": 0.6667,
+        "entidades_esperadas": 1,
+        "entidades_predichas": 2,
+        "resumen_f1": 0.4848,
+        "resumen_similitud": 0.6186,
+        "compresion": 0.3846,
+        "segundos": 20.81
+      },
+      {
+        "id": "T04",
+        "categoria": "resena",
+        "idioma_ok": true,
+        "idioma": "en/en",
+        "sentimiento_ok": true,
+        "sentimiento": "positivo/positivo",
+        "entidades_f1": 1.0,
+        "entidades_esperadas": 5,
+        "entidades_predichas": 5,
+        "resumen_f1": 0.2353,
+        "resumen_similitud": 0.3273,
+        "compresion": 0.5,
+        "segundos": 21.17
+      },
+      {
+        "id": "T05",
+        "categoria": "email",
+        "idioma_ok": true,
+        "idioma": "es/es",
+        "sentimiento_ok": true,
+        "sentimiento": "neutro/neutro",
+        "entidades_f1": 0.7273,
+        "entidades_esperadas": 4,
+        "entidades_predichas": 7,
+        "resumen_f1": 0.6875,
+        "resumen_similitud": 0.5808,
+        "compresion": 0.3934,
+        "segundos": 21.14
+      },
+      {
+        "id": "T06",
+        "categoria": "email",
+        "idioma_ok": true,
+        "idioma": "en/en",
+        "sentimiento_ok": true,
+        "sentimiento": "neutro/neutro",
+        "entidades_f1": 0.75,
+        "entidades_esperadas": 3,
+        "entidades_predichas": 5,
+        "resumen_f1": 0.6875,
+        "resumen_similitud": 0.7478,
+        "compresion": 0.4098,
+        "segundos": 21.2
+      },
+      {
+        "id": "T07",
+        "categoria": "noticia",
+        "idioma_ok": true,
+        "idioma": "fr/fr",
+        "sentimiento_ok": false,
+        "sentimiento": "neutro/positivo",
+        "entidades_f1": 0.6,
+        "entidades_esperadas": 6,
+        "entidades_predichas": 4,
+        "resumen_f1": 0.3636,
+        "resumen_similitud": 0.1026,
+        "compresion": 0.3636,
+        "segundos": 21.15
+      },
+      {
+        "id": "T08",
+        "categoria": "resena",
+        "idioma_ok": true,
+        "idioma": "de/de",
+        "sentimiento_ok": true,
+        "sentimiento": "positivo/positivo",
+        "entidades_f1": 0.5714,
+        "entidades_esperadas": 2,
+        "entidades_predichas": 5,
+        "resumen_f1": 0.2424,
+        "resumen_similitud": 0.1263,
+        "compresion": 0.4426,
+        "segundos": 20.74
+      },
+      {
+        "id": "T09",
+        "categoria": "email",
+        "idioma_ok": true,
+        "idioma": "en/en",
+        "sentimiento_ok": true,
+        "sentimiento": "negativo/negativo",
+        "entidades_f1": 0.8,
+        "entidades_esperadas": 2,
+        "entidades_predichas": 3,
+        "resumen_f1": 0.4848,
+        "resumen_similitud": 0.16,
+        "compresion": 0.3385,
+        "segundos": 20.83
+      },
+      {
+        "id": "T10",
+        "categoria": "noticia",
+        "idioma_ok": true,
+        "idioma": "es/es",
+        "sentimiento_ok": false,
+        "sentimiento": "positivo/neutro",
+        "entidades_f1": 0.9333,
+        "entidades_esperadas": 7,
+        "entidades_predichas": 8,
+        "resumen_f1": 0.6286,
+        "resumen_similitud": 0.7211,
+        "compresion": 0.4262,
+        "segundos": 20.92
+      }
+    ],
+    "distribucion_idiomas": {
+      "es": 4,
+      "en": 4,
+      "fr": 1,
+      "de": 1
+    },
+    "discrepancias": [
+      "T07 (noticia): idioma fr->fr, sentimiento neutro->positivo",
+      "T10 (noticia): idioma es->es, sentimiento positivo->neutro"
+    ]
+  },
+  "registros": [
+    {
+      "id": "T01",
+      "categoria": "noticia",
+      "texto": "El Banco Central de Espana publico este lunes un informe que confirma la desaceleracion economica del primer trimestre. La inflacion se situo en el 2,1%, dos puntos por debajo del objetivo, y el crecimiento del PIB fue del 0,3% trimestral segun el Instituto Nacional de Estadistica. Madrid, Barcelona y Valencia concentran el 40% de la actividad productiva nacional. El ministro de Economia, Gaspar Martinez, afirmo que el Gobierno aplicara estimulos fiscales en el ultimo trimestre.",
+      "salida": {
+        "idioma": {
+          "idioma": "es",
+          "nombre_idioma": "Español",
+          "confianza": 1.0,
+          "pistas": [
+            "Banco Central",
+            "publico",
+            "desaceleracion",
+            "inflacion",
+            "crecimiento",
+            "segun",
+            "ministro",
+            "afirmo",
+            "aplicara"
+          ]
+        },
+        "entidades": {
+          "entidades": [
+            {
+              "texto": "Banco Central de Espana",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Banco central nacional"
+            },
+            {
+              "texto": "este lunes",
+              "tipo": "FECHA",
+              "descripcion": "Dia de publicacion del informe"
+            },
+            {
+              "texto": "primer trimestre",
+              "tipo": "FECHA",
+              "descripcion": "Periodo economico evaluado"
+            },
+            {
+              "texto": "Instituto Nacional de Estadistica",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Organismo oficial de estadistica"
+            },
+            {
+              "texto": "Madrid",
+              "tipo": "LUGAR",
+              "descripcion": "Ciudad espanola"
+            },
+            {
+              "texto": "Barcelona",
+              "tipo": "LUGAR",
+              "descripcion": "Ciudad espanola"
+            },
+            {
+              "texto": "Valencia",
+              "tipo": "LUGAR",
+              "descripcion": "Ciudad espanola"
+            },
+            {
+              "texto": "Gaspar Martinez",
+              "tipo": "PERSONA",
+              "descripcion": "Ministro de Economia"
+            },
+            {
+              "texto": "Gobierno",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Poder ejecutivo"
+            },
+            {
+              "texto": "ultimo trimestre",
+              "tipo": "FECHA",
+              "descripcion": "Periodo de aplicacion de estimulos"
+            }
+          ]
+        },
+        "sentimiento": {
+          "sentimiento": "neutro",
+          "confianza": 0.95,
+          "intensidad": 0.1,
+          "explicacion": "El texto es un informe factual y administrativo que describe indicadores economicos sin emitir juicios de valor."
+        },
+        "resumen": {
+          "resumen": "El Banco Central de Espana confirmo la desaceleracion economica con un PIB del 0,3% y una inflacion del 2,1%, mientras el ministro Gaspar Martinez anuncio estimulos fiscales.",
+          "palabras_clave": [
+            "Banco Central de Espana",
+            "PIB",
+            "inflacion",
+            "Gaspar Martinez",
+            "estimulos fiscales"
+          ],
+          "longitud_original": 66,
+          "longitud_resumen": 25
+        }
+      },
+      "evaluacion": {
+        "idioma": {
+          "esperado": "es",
+          "predicho": "es",
+          "acierto": true,
+          "confianza": 1.0,
+          "pistas": [
+            "Banco Central",
+            "publico",
+            "desaceleracion",
+            "inflacion",
+            "crecimiento",
+            "segun",
+            "ministro",
+            "afirmo",
+            "aplicara"
+          ]
+        },
+        "sentimiento": {
+          "esperado": "neutro",
+          "predicho": "neutro",
+          "acierto": true,
+          "confianza": 0.95,
+          "explicacion": "El texto es un informe factual y administrativo que describe indicadores economicos sin emitir juicios de valor."
+        },
+        "entidades": {
+          "esperadas": [
+            "Banco Central de Espana",
+            "Instituto Nacional de Estadistica",
+            "Madrid",
+            "Barcelona",
+            "Valencia",
+            "Gaspar Martinez"
+          ],
+          "predichas": [
+            "Banco Central de Espana",
+            "este lunes",
+            "primer trimestre",
+            "Instituto Nacional de Estadistica",
+            "Madrid",
+            "Barcelona",
+            "Valencia",
+            "Gaspar Martinez",
+            "Gobierno",
+            "ultimo trimestre"
+          ],
+          "precision": 0.6,
+          "recall": 1.0,
+          "f1": 0.75,
+          "aciertos": 6,
+          "falsos_positivos": 4,
+          "falsos_negativos": 0,
+          "total_esperadas": 6,
+          "total_predichas": 10
+        },
+        "resumen": {
+          "esperado": "El Banco Central de Espana confirma la desaceleracion del primer trimestre, con inflacion del 2,1% y crecimiento del PIB del 0,3%, y el Gobierno aplicara estimulos fiscales en el ultimo trimestre.",
+          "predicho": "El Banco Central de Espana confirmo la desaceleracion economica con un PIB del 0,3% y una inflacion del 2,1%, mientras el ministro Gaspar Martinez anuncio estimulos fiscales.",
+          "precision_palabras": 0.5,
+          "recall_palabras": 0.5,
+          "f1_palabras": 0.5,
+          "palabras_comunes": 7,
+          "palabras_originales": 77,
+          "palabras_resumen": 29,
+          "tasa_compresion": 0.3766,
+          "similitud_caracteres": 0.6427,
+          "palabras_clave": [
+            "Banco Central de Espana",
+            "PIB",
+            "inflacion",
+            "Gaspar Martinez",
+            "estimulos fiscales"
+          ]
+        }
+      },
+      "segundos": 17.05,
+      "error": null
+    },
+    {
+      "id": "T02",
+      "categoria": "noticia",
+      "texto": "Nvidia reported record quarterly revenue of 46.1 billion dollars, driven by surging demand for artificial intelligence chips. Chief Executive Officer Jensen Huang said the company plans to double its data center investment over the next two years. Competitors AMD and Intel lost ground in the market, while Microsoft and Amazon confirmed orders worth billions of dollars. Shares rose 8% in after-hours trading on Wall Street.",
+      "salida": {
+        "idioma": {
+          "idioma": "en",
+          "nombre_idioma": "Inglés",
+          "confianza": 1.0,
+          "pistas": [
+            "reported",
+            "revenue",
+            "driven",
+            "company",
+            "market"
+          ]
+        },
+        "entidades": {
+          "entidades": [
+            {
+              "texto": "Nvidia",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Empresa de tecnologia"
+            },
+            {
+              "texto": "Jensen Huang",
+              "tipo": "PERSONA",
+              "descripcion": "Chief Executive Officer de Nvidia"
+            },
+            {
+              "texto": "AMD",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Competidor en el mercado de chips"
+            },
+            {
+              "texto": "Intel",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Competidor en el mercado de chips"
+            },
+            {
+              "texto": "Microsoft",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Empresa tecnologica cliente"
+            },
+            {
+              "texto": "Amazon",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Empresa tecnologica cliente"
+            },
+            {
+              "texto": "Wall Street",
+              "tipo": "LUGAR",
+              "descripcion": "Mercado financiero"
+            }
+          ]
+        },
+        "sentimiento": {
+          "sentimiento": "positivo",
+          "confianza": 0.95,
+          "intensidad": 0.9,
+          "explicacion": "Shares rose 8% and Nvidia reported record quarterly revenue of 46.1 billion dollars driven by surging demand."
+        },
+        "resumen": {
+          "resumen": "Nvidia reporto ingresos trimestrales record de 46.1 mil millones de dolares gracias a la demanda de chips de inteligencia artificial, impulsando un aumento del 8% en sus acciones.",
+          "palabras_clave": [
+            "Nvidia",
+            "ingresos",
+            "inteligencia artificial",
+            "Jensen Huang",
+            "Wall Street"
+          ],
+          "longitud_original": 59,
+          "longitud_resumen": 27
+        }
+      },
+      "evaluacion": {
+        "idioma": {
+          "esperado": "en",
+          "predicho": "en",
+          "acierto": true,
+          "confianza": 1.0,
+          "pistas": [
+            "reported",
+            "revenue",
+            "driven",
+            "company",
+            "market"
+          ]
+        },
+        "sentimiento": {
+          "esperado": "positivo",
+          "predicho": "positivo",
+          "acierto": true,
+          "confianza": 0.95,
+          "explicacion": "Shares rose 8% and Nvidia reported record quarterly revenue of 46.1 billion dollars driven by surging demand."
+        },
+        "entidades": {
+          "esperadas": [
+            "Nvidia",
+            "Jensen Huang",
+            "AMD",
+            "Intel",
+            "Microsoft",
+            "Amazon",
+            "Wall Street"
+          ],
+          "predichas": [
+            "Nvidia",
+            "Jensen Huang",
+            "AMD",
+            "Intel",
+            "Microsoft",
+            "Amazon",
+            "Wall Street"
+          ],
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "aciertos": 7,
+          "falsos_positivos": 0,
+          "falsos_negativos": 0,
+          "total_esperadas": 7,
+          "total_predichas": 7
+        },
+        "resumen": {
+          "esperado": "Nvidia registro ingresos records de 46.100 millones de dolares por la demanda de chips de IA, duplicara su inversion en centros de datos y sus acciones subieron un 8% en Wall Street.",
+          "predicho": "Nvidia reporto ingresos trimestrales record de 46.1 mil millones de dolares gracias a la demanda de chips de inteligencia artificial, impulsando un aumento del 8% en sus acciones.",
+          "precision_palabras": 0.4667,
+          "recall_palabras": 0.4375,
+          "f1_palabras": 0.4516,
+          "palabras_comunes": 7,
+          "palabras_originales": 67,
+          "palabras_resumen": 29,
+          "tasa_compresion": 0.4328,
+          "similitud_caracteres": 0.6141,
+          "palabras_clave": [
+            "Nvidia",
+            "ingresos",
+            "inteligencia artificial",
+            "Jensen Huang",
+            "Wall Street"
+          ]
+        }
+      },
+      "segundos": 21.37,
+      "error": null
+    },
+    {
+      "id": "T03",
+      "categoria": "resena",
+      "texto": "Compre este portatil hace tres semanas y la experiencia ha sido desastrosa. La bateria se degrada un 30% en apenas diez dias, el teclado se despego en la esquina izquierda y el servicio tecnico de MediaMarkt me ha tenido esperando el doble de lo prometido. Ni siquiera han cambiado el producto. Lo devuelvo manana mismo: es el peor portatil que he comprado en diez anos.",
+      "salida": {
+        "idioma": {
+          "idioma": "es",
+          "nombre_idioma": "Español",
+          "confianza": 1.0,
+          "pistas": [
+            "uso de tildes y caracteres propios del español como la letra ñ",
+            "palabras características como portatil, bateria, tecnico, manana",
+            "construcciones gramaticales habituales del español como 'hace tres semanas' y 'el doble de lo prometido'"
+          ]
+        },
+        "entidades": {
+          "entidades": [
+            {
+              "texto": "MediaMarkt",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Empresa proveedora del servicio tecnico"
+            },
+            {
+              "texto": "manana",
+              "tipo": "FECHA",
+              "descripcion": "Momento en el que se realizara la devolucion"
+            }
+          ]
+        },
+        "sentimiento": {
+          "sentimiento": "negativo",
+          "confianza": 1.0,
+          "intensidad": 1.0,
+          "explicacion": "El texto califica la experiencia como desastrosa y menciona que es el peor portatil que ha comprado."
+        },
+        "resumen": {
+          "resumen": "Este portatil comprado hace tres semanas presenta una bateria degradada, teclado despegado y un servicio tecnico deficiente en MediaMarkt, por lo que sera devuelto manana.",
+          "palabras_clave": [
+            "portatil",
+            "bateria",
+            "teclado",
+            "MediaMarkt",
+            "devuelto"
+          ],
+          "longitud_original": 56,
+          "longitud_resumen": 25
+        }
+      },
+      "evaluacion": {
+        "idioma": {
+          "esperado": "es",
+          "predicho": "es",
+          "acierto": true,
+          "confianza": 1.0,
+          "pistas": [
+            "uso de tildes y caracteres propios del español como la letra ñ",
+            "palabras características como portatil, bateria, tecnico, manana",
+            "construcciones gramaticales habituales del español como 'hace tres semanas' y 'el doble de lo prometido'"
+          ]
+        },
+        "sentimiento": {
+          "esperado": "negativo",
+          "predicho": "negativo",
+          "acierto": true,
+          "confianza": 1.0,
+          "explicacion": "El texto califica la experiencia como desastrosa y menciona que es el peor portatil que ha comprado."
+        },
+        "entidades": {
+          "esperadas": [
+            "MediaMarkt"
+          ],
+          "predichas": [
+            "MediaMarkt",
+            "manana"
+          ],
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6667,
+          "aciertos": 1,
+          "falsos_positivos": 1,
+          "falsos_negativos": 0,
+          "total_esperadas": 1,
+          "total_predichas": 2
+        },
+        "resumen": {
+          "esperado": "El cliente devuelve un portatil con bateria degradada, teclado despegado y lentitud del servicio tecnico de MediaMarkt, tras una experiencia que califica de desastrosa.",
+          "predicho": "Este portatil comprado hace tres semanas presenta una bateria degradada, teclado despegado y un servicio tecnico deficiente en MediaMarkt, por lo que sera devuelto manana.",
+          "precision_palabras": 0.4444,
+          "recall_palabras": 0.5333,
+          "f1_palabras": 0.4848,
+          "palabras_comunes": 8,
+          "palabras_originales": 65,
+          "palabras_resumen": 25,
+          "tasa_compresion": 0.3846,
+          "similitud_caracteres": 0.6186,
+          "palabras_clave": [
+            "portatil",
+            "bateria",
+            "teclado",
+            "MediaMarkt",
+            "devuelto"
+          ]
+        }
+      },
+      "segundos": 20.81,
+      "error": null
+    },
+    {
+      "id": "T04",
+      "categoria": "resena",
+      "texto": "I absolutely loved the new season of Severance. The performances from Adam Scott and Britt Lower are phenomenal, and director Dan Erickson finally nails the tone he was aiming for. Apple TV+ handled the international distribution brilliantly. A few episodes drag in the middle, but the finale is worth every minute of the wait. Easily the best show on television this year.",
+      "salida": {
+        "idioma": {
+          "idioma": "en",
+          "nombre_idioma": "English",
+          "confianza": 1.0,
+          "pistas": [
+            "I",
+            "absolutely",
+            "loved",
+            "the",
+            "new",
+            "season",
+            "of",
+            "and",
+            "are"
+          ]
+        },
+        "entidades": {
+          "entidades": [
+            {
+              "texto": "Severance",
+              "tipo": "OTRO",
+              "descripcion": "Nombre de la serie de television"
+            },
+            {
+              "texto": "Adam Scott",
+              "tipo": "PERSONA",
+              "descripcion": "Actor principal de la serie"
+            },
+            {
+              "texto": "Britt Lower",
+              "tipo": "PERSONA",
+              "descripcion": "Actriz principal de la serie"
+            },
+            {
+              "texto": "Dan Erickson",
+              "tipo": "PERSONA",
+              "descripcion": "Director de la serie"
+            },
+            {
+              "texto": "Apple TV+",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Plataforma de distribucion y streaming"
+            }
+          ]
+        },
+        "sentimiento": {
+          "sentimiento": "positivo",
+          "confianza": 0.95,
+          "intensidad": 0.9,
+          "explicacion": "I absolutely loved the new season... Easily the best show on television this year."
+        },
+        "resumen": {
+          "resumen": "La nueva temporada de Severance, emitida por Apple TV+ y protagonizada por Adam Scott y Britt Lower, destaca como el mejor programa de televisión del año gracias a una dirección excepcional.",
+          "palabras_clave": [
+            "Severance",
+            "Apple TV+",
+            "Adam Scott",
+            "Britt Lower",
+            "temporada"
+          ],
+          "longitud_original": 62,
+          "longitud_resumen": 28
+        }
+      },
+      "evaluacion": {
+        "idioma": {
+          "esperado": "en",
+          "predicho": "en",
+          "acierto": true,
+          "confianza": 1.0,
+          "pistas": [
+            "I",
+            "absolutely",
+            "loved",
+            "the",
+            "new",
+            "season",
+            "of",
+            "and",
+            "are"
+          ]
+        },
+        "sentimiento": {
+          "esperado": "positivo",
+          "predicho": "positivo",
+          "acierto": true,
+          "confianza": 0.95,
+          "explicacion": "I absolutely loved the new season... Easily the best show on television this year."
+        },
+        "entidades": {
+          "esperadas": [
+            "Severance",
+            "Adam Scott",
+            "Britt Lower",
+            "Dan Erickson",
+            "Apple TV+"
+          ],
+          "predichas": [
+            "Severance",
+            "Adam Scott",
+            "Britt Lower",
+            "Dan Erickson",
+            "Apple TV+"
+          ],
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "aciertos": 5,
+          "falsos_positivos": 0,
+          "falsos_negativos": 0,
+          "total_esperadas": 5,
+          "total_predichas": 5
+        },
+        "resumen": {
+          "esperado": "El usuario elogia la nueva temporada de Severance por sus actuaciones y el trabajo del director Dan Erickson, con una distribucion internacionalhandled por Apple TV+, aunque algunos capitulos se alargan.",
+          "predicho": "La nueva temporada de Severance, emitida por Apple TV+ y protagonizada por Adam Scott y Britt Lower, destaca como el mejor programa de televisión del año gracias a una dirección excepcional.",
+          "precision_palabras": 0.2222,
+          "recall_palabras": 0.25,
+          "f1_palabras": 0.2353,
+          "palabras_comunes": 4,
+          "palabras_originales": 62,
+          "palabras_resumen": 31,
+          "tasa_compresion": 0.5,
+          "similitud_caracteres": 0.3273,
+          "palabras_clave": [
+            "Severance",
+            "Apple TV+",
+            "Adam Scott",
+            "Britt Lower",
+            "temporada"
+          ]
+        }
+      },
+      "segundos": 21.17,
+      "error": null
+    },
+    {
+      "id": "T05",
+      "categoria": "email",
+      "texto": "Asunto: Solicitud de vacaciones aprobada - 14 al 25 de julio. Hola Marta, te escribo para confirmar las vacaciones que solicite en junio. Mi supervisor Carlos Delgado ya lo ha validado y el equipo de soporte queda cubierto por Lucia Ferrer. Adjunto el calendario actualizado del proyecto Atlas para que lo revises. Gracias de antemano por la gestion. Un saludo, Andres Molina.",
+      "salida": {
+        "idioma": {
+          "idioma": "es",
+          "nombre_idioma": "Español",
+          "confianza": 1.0,
+          "pistas": [
+            "Asunto",
+            "Solicitud de vacaciones aprobada",
+            "te escribo para confirmar",
+            "Gracias de antemano",
+            "gestion"
+          ]
+        },
+        "entidades": {
+          "entidades": [
+            {
+              "texto": "14 al 25 de julio",
+              "tipo": "FECHA",
+              "descripcion": "Periodo de vacaciones solicitado"
+            },
+            {
+              "texto": "Marta",
+              "tipo": "PERSONA",
+              "descripcion": "Destinataria del mensaje"
+            },
+            {
+              "texto": "junio",
+              "tipo": "FECHA",
+              "descripcion": "Mes en el que se solicitaron las vacaciones"
+            },
+            {
+              "texto": "Carlos Delgado",
+              "tipo": "PERSONA",
+              "descripcion": "Supervisor que valido las vacaciones"
+            },
+            {
+              "texto": "Lucia Ferrer",
+              "tipo": "PERSONA",
+              "descripcion": "Persona que cubre el equipo de soporte"
+            },
+            {
+              "texto": "Atlas",
+              "tipo": "OTRO",
+              "descripcion": "Nombre del proyecto"
+            },
+            {
+              "texto": "Andres Molina",
+              "tipo": "PERSONA",
+              "descripcion": "Remitente del mensaje"
+            }
+          ]
+        },
+        "sentimiento": {
+          "sentimiento": "neutro",
+          "confianza": 0.95,
+          "intensidad": 0.1,
+          "explicacion": "El texto es un mensaje administrativo e informativo sobre una solicitud de vacaciones aprobada."
+        },
+        "resumen": {
+          "resumen": "Andres Molina confirma que su supervisor Carlos Delgado aprobo sus vacaciones del 14 al 25 de julio, quedando Lucia Ferrer a cargo del soporte.",
+          "palabras_clave": [
+            "Andres Molina",
+            "vacaciones",
+            "Carlos Delgado",
+            "Lucia Ferrer",
+            "proyecto Atlas"
+          ],
+          "longitud_original": 56,
+          "longitud_resumen": 23
+        }
+      },
+      "evaluacion": {
+        "idioma": {
+          "esperado": "es",
+          "predicho": "es",
+          "acierto": true,
+          "confianza": 1.0,
+          "pistas": [
+            "Asunto",
+            "Solicitud de vacaciones aprobada",
+            "te escribo para confirmar",
+            "Gracias de antemano",
+            "gestion"
+          ]
+        },
+        "sentimiento": {
+          "esperado": "neutro",
+          "predicho": "neutro",
+          "acierto": true,
+          "confianza": 0.95,
+          "explicacion": "El texto es un mensaje administrativo e informativo sobre una solicitud de vacaciones aprobada."
+        },
+        "entidades": {
+          "esperadas": [
+            "Marta",
+            "Carlos Delgado",
+            "Lucia Ferrer",
+            "Atlas"
+          ],
+          "predichas": [
+            "14 al 25 de julio",
+            "Marta",
+            "junio",
+            "Carlos Delgado",
+            "Lucia Ferrer",
+            "Atlas",
+            "Andres Molina"
+          ],
+          "precision": 0.5714,
+          "recall": 1.0,
+          "f1": 0.7273,
+          "aciertos": 4,
+          "falsos_positivos": 3,
+          "falsos_negativos": 0,
+          "total_esperadas": 4,
+          "total_predichas": 7
+        },
+        "resumen": {
+          "esperado": "Andres Molina confirma a Marta sus vacaciones del 14 al 25 de julio, validadas por su supervisor Carlos Delgado y con Lucia Ferrer cubriendo el soporte, y adjunta el calendario del proyecto Atlas.",
+          "predicho": "Andres Molina confirma que su supervisor Carlos Delgado aprobo sus vacaciones del 14 al 25 de julio, quedando Lucia Ferrer a cargo del soporte.",
+          "precision_palabras": 0.7857,
+          "recall_palabras": 0.6111,
+          "f1_palabras": 0.6875,
+          "palabras_comunes": 11,
+          "palabras_originales": 61,
+          "palabras_resumen": 24,
+          "tasa_compresion": 0.3934,
+          "similitud_caracteres": 0.5808,
+          "palabras_clave": [
+            "Andres Molina",
+            "vacaciones",
+            "Carlos Delgado",
+            "Lucia Ferrer",
+            "proyecto Atlas"
+          ]
+        }
+      },
+      "segundos": 21.14,
+      "error": null
+    },
+    {
+      "id": "T06",
+      "categoria": "email",
+      "texto": "Subject: Contract renewal - urgent action needed. Dear Ms. Fitzgerald, our records show that the service agreement with Northwind Traders expired on March 31st. To avoid interruption of your account, we need a signed renewal before April 15th. Please review the attached terms and reach out to your account manager Priya Raman if you have questions. Thank you for your continued partnership.",
+      "salida": {
+        "idioma": {
+          "idioma": "en",
+          "nombre_idioma": "Inglés",
+          "confianza": 1.0,
+          "pistas": [
+            "Subject",
+            "Dear",
+            "our records show",
+            "expired",
+            "To avoid interruption",
+            "Please review",
+            "Thank you for your continued partnership"
+          ]
+        },
+        "entidades": {
+          "entidades": [
+            {
+              "texto": "Ms. Fitzgerald",
+              "tipo": "PERSONA",
+              "descripcion": "Recipient of the contract renewal notice"
+            },
+            {
+              "texto": "Northwind Traders",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Company holding the expiring service agreement"
+            },
+            {
+              "texto": "March 31st",
+              "tipo": "FECHA",
+              "descripcion": "Expiration date of the service agreement"
+            },
+            {
+              "texto": "April 15th",
+              "tipo": "FECHA",
+              "descripcion": "Deadline for the signed renewal"
+            },
+            {
+              "texto": "Priya Raman",
+              "tipo": "PERSONA",
+              "descripcion": "Account manager to contact for questions"
+            }
+          ]
+        },
+        "sentimiento": {
+          "sentimiento": "neutro",
+          "confianza": 0.95,
+          "intensidad": 0.1,
+          "explicacion": "Subject: Contract renewal - urgent action needed. Dear Ms. Fitzgerald, our records show that the service agreement expired."
+        },
+        "resumen": {
+          "resumen": "El acuerdo de servicio con Northwind Traders vencio el 31 de marzo y requiere una renovacion firmada antes del 15 de abril para evitar interrupciones.",
+          "palabras_clave": [
+            "Northwind Traders",
+            "renovacion",
+            "acuerdo",
+            "31 de marzo",
+            "15 de abril"
+          ],
+          "longitud_original": 56,
+          "longitud_resumen": 24
+        }
+      },
+      "evaluacion": {
+        "idioma": {
+          "esperado": "en",
+          "predicho": "en",
+          "acierto": true,
+          "confianza": 1.0,
+          "pistas": [
+            "Subject",
+            "Dear",
+            "our records show",
+            "expired",
+            "To avoid interruption",
+            "Please review",
+            "Thank you for your continued partnership"
+          ]
+        },
+        "sentimiento": {
+          "esperado": "neutro",
+          "predicho": "neutro",
+          "acierto": true,
+          "confianza": 0.95,
+          "explicacion": "Subject: Contract renewal - urgent action needed. Dear Ms. Fitzgerald, our records show that the service agreement expired."
+        },
+        "entidades": {
+          "esperadas": [
+            "Ms. Fitzgerald",
+            "Northwind Traders",
+            "Priya Raman"
+          ],
+          "predichas": [
+            "Ms. Fitzgerald",
+            "Northwind Traders",
+            "March 31st",
+            "April 15th",
+            "Priya Raman"
+          ],
+          "precision": 0.6,
+          "recall": 1.0,
+          "f1": 0.75,
+          "aciertos": 3,
+          "falsos_positivos": 2,
+          "falsos_negativos": 0,
+          "total_esperadas": 3,
+          "total_predichas": 5
+        },
+        "resumen": {
+          "esperado": "Se avisa a Ms. Fitzgerald de que el acuerdo de servicio con Northwind Traders caduco el 31 de marzo y hace falta una renovacion firmada antes del 15 de abril para evitar cortes en su cuenta.",
+          "predicho": "El acuerdo de servicio con Northwind Traders vencio el 31 de marzo y requiere una renovacion firmada antes del 15 de abril para evitar interrupciones.",
+          "precision_palabras": 0.7857,
+          "recall_palabras": 0.6111,
+          "f1_palabras": 0.6875,
+          "palabras_comunes": 11,
+          "palabras_originales": 61,
+          "palabras_resumen": 25,
+          "tasa_compresion": 0.4098,
+          "similitud_caracteres": 0.7478,
+          "palabras_clave": [
+            "Northwind Traders",
+            "renovacion",
+            "acuerdo",
+            "31 de marzo",
+            "15 de abril"
+          ]
+        }
+      },
+      "segundos": 21.2,
+      "error": null
+    },
+    {
+      "id": "T07",
+      "categoria": "noticia",
+      "texto": "Le Centre national du cinema annonce une hausse de 12% des entrees dans les salles francaises. Selon le rapport publie ce mardi, des films comme Le Comte de Monte-Cristo et Emilia Perez ont domine le box-office, suivis des productions de Miyazaki sorties en France par Pathe. La fermeture de seize cinemas ruraux depuis 2023 continue toutefois de penaliser les regions rurales, selon l'INSEE.",
+      "salida": {
+        "idioma": {
+          "idioma": "fr",
+          "nombre_idioma": "Francés",
+          "confianza": 0.99,
+          "pistas": [
+            "accent graves et aigus (cinema, publie, mardis)",
+            "mots typiques (hausse, entrees, salles, selon)",
+            "prepositions et articles (de, des, la, les)"
+          ]
+        },
+        "entidades": {
+          "entidades": [
+            {
+              "texto": "Le Centre national du cinema",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Organismo nacional de cine en Francia"
+            },
+            {
+              "texto": "France",
+              "tipo": "LUGAR",
+              "descripcion": "Pais donde se estrenaron las producciones"
+            },
+            {
+              "texto": "Pathe",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Distribuidora de cine en Francia"
+            },
+            {
+              "texto": "INSEE",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Instituto nacional de estadistica"
+            }
+          ]
+        },
+        "sentimiento": {
+          "sentimiento": "positivo",
+          "confianza": 0.85,
+          "intensidad": 0.6,
+          "explicacion": "El texto informa sobre una \"hausse de 12% des entrees dans les salles francaises\", lo cual representa un hecho claramente favorable."
+        },
+        "resumen": {
+          "resumen": "El Centre national du cinema anuncia un incremento del 12% en las salas francesas gracias a Le Comte de Monte-Cristo y Emilia Perez.",
+          "palabras_clave": [
+            "Centre national du cinema",
+            "entradas",
+            "salas francesas",
+            "Le Comte de Monte-Cristo",
+            "Emilia Perez"
+          ],
+          "longitud_original": 50,
+          "longitud_resumen": 22
+        }
+      },
+      "evaluacion": {
+        "idioma": {
+          "esperado": "fr",
+          "predicho": "fr",
+          "acierto": true,
+          "confianza": 0.99,
+          "pistas": [
+            "accent graves et aigus (cinema, publie, mardis)",
+            "mots typiques (hausse, entrees, salles, selon)",
+            "prepositions et articles (de, des, la, les)"
+          ]
+        },
+        "sentimiento": {
+          "esperado": "neutro",
+          "predicho": "positivo",
+          "acierto": false,
+          "confianza": 0.85,
+          "explicacion": "El texto informa sobre una \"hausse de 12% des entrees dans les salles francaises\", lo cual representa un hecho claramente favorable."
+        },
+        "entidades": {
+          "esperadas": [
+            "Centre national du cinema",
+            "Le Comte de Monte-Cristo",
+            "Emilia Perez",
+            "Miyazaki",
+            "Pathe",
+            "INSEE"
+          ],
+          "predichas": [
+            "Le Centre national du cinema",
+            "France",
+            "Pathe",
+            "INSEE"
+          ],
+          "precision": 0.75,
+          "recall": 0.5,
+          "f1": 0.6,
+          "aciertos": 3,
+          "falsos_positivos": 1,
+          "falsos_negativos": 3,
+          "total_esperadas": 6,
+          "total_predichas": 4
+        },
+        "resumen": {
+          "esperado": "El Centro Nacional de Cine frances anuncia una subida del 12% de las entradas en cines, con Le Comte de Monte-Cristo y Emilia Perez liderando el box-office, mientras el cierre de cines rurales penaliza a las regiones rurales.",
+          "predicho": "El Centre national du cinema anuncia un incremento del 12% en las salas francesas gracias a Le Comte de Monte-Cristo y Emilia Perez.",
+          "precision_palabras": 0.4615,
+          "recall_palabras": 0.3,
+          "f1_palabras": 0.3636,
+          "palabras_comunes": 6,
+          "palabras_originales": 66,
+          "palabras_resumen": 24,
+          "tasa_compresion": 0.3636,
+          "similitud_caracteres": 0.1026,
+          "palabras_clave": [
+            "Centre national du cinema",
+            "entradas",
+            "salas francesas",
+            "Le Comte de Monte-Cristo",
+            "Emilia Perez"
+          ]
+        }
+      },
+      "segundos": 21.15,
+      "error": null
+    },
+    {
+      "id": "T08",
+      "categoria": "resena",
+      "texto": "Das neue BMW Modell i4 ist ein fantastisches Auto. Die Fahrdynamik ist uberraschend sportlich, der Innenraum ist luxuros und die Reichweite von 510 Kilometern reicht fur meine Wochenendfahrten nach Muenchen vollkommen aus. Der Preis ist allerdings hoch, und der Sprachassistent von BMW hat mehrfach den Wetterbericht vorgelesen statt zu navigieren. Trotzdem bin ich sehr zufrieden mit dem Kauf bei BMW Muenchen.",
+      "salida": {
+        "idioma": {
+          "idioma": "de",
+          "nombre_idioma": "Aleman",
+          "confianza": 0.99,
+          "pistas": [
+            "Das",
+            "neue",
+            "ist",
+            "ein",
+            "und",
+            "fur",
+            "mit"
+          ]
+        },
+        "entidades": {
+          "entidades": [
+            {
+              "texto": "BMW",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Marca de automoviles"
+            },
+            {
+              "texto": "i4",
+              "tipo": "OTRO",
+              "descripcion": "Modelo de automovil"
+            },
+            {
+              "texto": "Muenchen",
+              "tipo": "LUGAR",
+              "descripcion": "Ciudad de destino"
+            },
+            {
+              "texto": "BMW",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Fabricante del vehiculo y del sistema de voz"
+            },
+            {
+              "texto": "BMW Muenchen",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Concesionario o sucursal donde se realizo la compra"
+            }
+          ]
+        },
+        "sentimiento": {
+          "sentimiento": "positivo",
+          "confianza": 0.95,
+          "intensidad": 0.8,
+          "explicacion": "Trotzdem bin ich sehr zufrieden mit dem Kauf"
+        },
+        "resumen": {
+          "resumen": "El nuevo BMW i4 comprado en BMW Muenchen ofrece una gran deportividad y quinientos diez kilómetros de autonomía, aunque su elevado precio y fallos del asistente decepcionan.",
+          "palabras_clave": [
+            "BMW i4",
+            "BMW Muenchen",
+            "autonomía",
+            "deportividad",
+            "precio"
+          ],
+          "longitud_original": 61,
+          "longitud_resumen": 26
+        }
+      },
+      "evaluacion": {
+        "idioma": {
+          "esperado": "de",
+          "predicho": "de",
+          "acierto": true,
+          "confianza": 0.99,
+          "pistas": [
+            "Das",
+            "neue",
+            "ist",
+            "ein",
+            "und",
+            "fur",
+            "mit"
+          ]
+        },
+        "sentimiento": {
+          "esperado": "positivo",
+          "predicho": "positivo",
+          "acierto": true,
+          "confianza": 0.95,
+          "explicacion": "Trotzdem bin ich sehr zufrieden mit dem Kauf"
+        },
+        "entidades": {
+          "esperadas": [
+            "BMW",
+            "BMW Muenchen"
+          ],
+          "predichas": [
+            "BMW",
+            "i4",
+            "Muenchen",
+            "BMW",
+            "BMW Muenchen"
+          ],
+          "precision": 0.4,
+          "recall": 1.0,
+          "f1": 0.5714,
+          "aciertos": 2,
+          "falsos_positivos": 3,
+          "falsos_negativos": 0,
+          "total_esperadas": 2,
+          "total_predichas": 5
+        },
+        "resumen": {
+          "esperado": "El propietario valora muy positivamente el BMW i4 por su dinamica esportiva, su interior lujoso y su autonomia de 510 km, aunque critica el precio alto y el asistente que no navega bien y comprueba en BMW Munich.",
+          "predicho": "El nuevo BMW i4 comprado en BMW Muenchen ofrece una gran deportividad y quinientos diez kilómetros de autonomía, aunque su elevado precio y fallos del asistente decepcionan.",
+          "precision_palabras": 0.25,
+          "recall_palabras": 0.2353,
+          "f1_palabras": 0.2424,
+          "palabras_comunes": 4,
+          "palabras_originales": 61,
+          "palabras_resumen": 27,
+          "tasa_compresion": 0.4426,
+          "similitud_caracteres": 0.1263,
+          "palabras_clave": [
+            "BMW i4",
+            "BMW Muenchen",
+            "autonomía",
+            "deportividad",
+            "precio"
+          ]
+        }
+      },
+      "segundos": 20.74,
+      "error": null
+    },
+    {
+      "id": "T09",
+      "categoria": "email",
+      "texto": "Hi team, quick heads-up: the production server crashed again last night and we lost about 400 orders from Shopify. The root cause was a memory leak in the checkout module, not the database like we first assumed. I've rolled back the deploy and added an alert. Can someone from the platform group review the postmortem in Confluence before Thursday? Sorry for the noise.",
+      "salida": {
+        "idioma": {
+          "idioma": "en",
+          "nombre_idioma": "English",
+          "confianza": 1.0,
+          "pistas": [
+            "Hi team",
+            "quick heads-up",
+            "production server",
+            "market terminology like Shopify and checkout",
+            "grammatical structures such as 'Can someone from'"
+          ]
+        },
+        "entidades": {
+          "entidades": [
+            {
+              "texto": "Shopify",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Plataforma de comercio electronico"
+            },
+            {
+              "texto": "Confluence",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Herramienta de colaboracion y documentacion"
+            },
+            {
+              "texto": "Thursday",
+              "tipo": "FECHA",
+              "descripcion": "Dia de la semana limite para revisar el documento"
+            }
+          ]
+        },
+        "sentimiento": {
+          "sentimiento": "negativo",
+          "confianza": 0.95,
+          "intensidad": 0.8,
+          "explicacion": "the production server crashed again last night and we lost about 400 orders"
+        },
+        "resumen": {
+          "resumen": "El servidor de produccion sufrio un fallo por fuga de memoria en el modulo de pago, perdiendo unos 400 pedidos de Shopify.",
+          "palabras_clave": [
+            "produccion",
+            "memoria",
+            "Shopify",
+            "pedidos",
+            "servidor"
+          ],
+          "longitud_original": 62,
+          "longitud_resumen": 21
+        }
+      },
+      "evaluacion": {
+        "idioma": {
+          "esperado": "en",
+          "predicho": "en",
+          "acierto": true,
+          "confianza": 1.0,
+          "pistas": [
+            "Hi team",
+            "quick heads-up",
+            "production server",
+            "market terminology like Shopify and checkout",
+            "grammatical structures such as 'Can someone from'"
+          ]
+        },
+        "sentimiento": {
+          "esperado": "negativo",
+          "predicho": "negativo",
+          "acierto": true,
+          "confianza": 0.95,
+          "explicacion": "the production server crashed again last night and we lost about 400 orders"
+        },
+        "entidades": {
+          "esperadas": [
+            "Shopify",
+            "Confluence"
+          ],
+          "predichas": [
+            "Shopify",
+            "Confluence",
+            "Thursday"
+          ],
+          "precision": 0.6667,
+          "recall": 1.0,
+          "f1": 0.8,
+          "aciertos": 2,
+          "falsos_positivos": 1,
+          "falsos_negativos": 0,
+          "total_esperadas": 2,
+          "total_predichas": 3
+        },
+        "resumen": {
+          "esperado": "Un correo avisa de que el servidor de produccion se cayo otra vez y se perdieron unos 400 pedidos de Shopify por una fuga de memoria en el modulo de checkout, ya revertida, y pide revisar el postmortem en Confluence antes del jueves.",
+          "predicho": "El servidor de produccion sufrio un fallo por fuga de memoria en el modulo de pago, perdiendo unos 400 pedidos de Shopify.",
+          "precision_palabras": 0.6667,
+          "recall_palabras": 0.381,
+          "f1_palabras": 0.4848,
+          "palabras_comunes": 8,
+          "palabras_originales": 65,
+          "palabras_resumen": 22,
+          "tasa_compresion": 0.3385,
+          "similitud_caracteres": 0.16,
+          "palabras_clave": [
+            "produccion",
+            "memoria",
+            "Shopify",
+            "pedidos",
+            "servidor"
+          ]
+        }
+      },
+      "segundos": 20.83,
+      "error": null
+    },
+    {
+      "id": "T10",
+      "categoria": "noticia",
+      "texto": "Google presento en Mountain View su nuevo modelo de IA generativa, que multiplica por cuatro la velocidad de respuesta y reduce un 60% el consumo energetico del centro de datos. La compania, fundada por Larry Page y Sergey Brin en 1998, afirma que el modelo ya lo usan OpenAI, Deutsche Telekom y el Hospital General de Valencia en sus procesos internos.",
+      "salida": {
+        "idioma": {
+          "idioma": "es",
+          "nombre_idioma": "Español",
+          "confianza": 0.99,
+          "pistas": [
+            "uso de tildes en palabras como presento, energetico y compania",
+            "palabras caracteristicas como que, su, nuevo, modelo",
+            "estructura gramatical propia del español"
+          ]
+        },
+        "entidades": {
+          "entidades": [
+            {
+              "texto": "Google",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Empresa tecnologica"
+            },
+            {
+              "texto": "Mountain View",
+              "tipo": "LUGAR",
+              "descripcion": "Ciudad sede de Google"
+            },
+            {
+              "texto": "Larry Page",
+              "tipo": "PERSONA",
+              "descripcion": "Fundador de Google"
+            },
+            {
+              "texto": "Sergey Brin",
+              "tipo": "PERSONA",
+              "descripcion": "Fundador de Google"
+            },
+            {
+              "texto": "1998",
+              "tipo": "FECHA",
+              "descripcion": "Ano de fundacion"
+            },
+            {
+              "texto": "OpenAI",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Empresa de inteligencia artificial"
+            },
+            {
+              "texto": "Deutsche Telekom",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Empresa de telecomunicaciones"
+            },
+            {
+              "texto": "Hospital General de Valencia",
+              "tipo": "ORGANIZACION",
+              "descripcion": "Institucion sanitaria"
+            }
+          ]
+        },
+        "sentimiento": {
+          "sentimiento": "neutro",
+          "confianza": 1.0,
+          "intensidad": 0.0,
+          "explicacion": "El texto es un informe factual y periodistico sobre la presentacion del nuevo modelo de IA sin expresar juicios de valor."
+        },
+        "resumen": {
+          "resumen": "Google presento en Mountain View su nuevo modelo de inteligencia artificial, el cual ya es utilizado por OpenAI, Deutsche Telekom y el Hospital General de Valencia.",
+          "palabras_clave": [
+            "Google",
+            "Mountain View",
+            "IA generativa",
+            "OpenAI",
+            "Deutsche Telekom"
+          ],
+          "longitud_original": 48,
+          "longitud_resumen": 25
+        }
+      },
+      "evaluacion": {
+        "idioma": {
+          "esperado": "es",
+          "predicho": "es",
+          "acierto": true,
+          "confianza": 0.99,
+          "pistas": [
+            "uso de tildes en palabras como presento, energetico y compania",
+            "palabras caracteristicas como que, su, nuevo, modelo",
+            "estructura gramatical propia del español"
+          ]
+        },
+        "sentimiento": {
+          "esperado": "positivo",
+          "predicho": "neutro",
+          "acierto": false,
+          "confianza": 1.0,
+          "explicacion": "El texto es un informe factual y periodistico sobre la presentacion del nuevo modelo de IA sin expresar juicios de valor."
+        },
+        "entidades": {
+          "esperadas": [
+            "Google",
+            "Mountain View",
+            "Larry Page",
+            "Sergey Brin",
+            "OpenAI",
+            "Deutsche Telekom",
+            "Hospital General de Valencia"
+          ],
+          "predichas": [
+            "Google",
+            "Mountain View",
+            "Larry Page",
+            "Sergey Brin",
+            "1998",
+            "OpenAI",
+            "Deutsche Telekom",
+            "Hospital General de Valencia"
+          ],
+          "precision": 0.875,
+          "recall": 1.0,
+          "f1": 0.9333,
+          "aciertos": 7,
+          "falsos_positivos": 1,
+          "falsos_negativos": 0,
+          "total_esperadas": 7,
+          "total_predichas": 8
+        },
+        "resumen": {
+          "esperado": "Google presento en Mountain View un modelo de IA generativa cuatro veces mas rapido y con un 60% menos de consumo energetico, ya usado por OpenAI, Deutsche Telekom y el Hospital General de Valencia.",
+          "predicho": "Google presento en Mountain View su nuevo modelo de inteligencia artificial, el cual ya es utilizado por OpenAI, Deutsche Telekom y el Hospital General de Valencia.",
+          "precision_palabras": 0.6875,
+          "recall_palabras": 0.5789,
+          "f1_palabras": 0.6286,
+          "palabras_comunes": 11,
+          "palabras_originales": 61,
+          "palabras_resumen": 26,
+          "tasa_compresion": 0.4262,
+          "similitud_caracteres": 0.7211,
+          "palabras_clave": [
+            "Google",
+            "Mountain View",
+            "IA generativa",
+            "OpenAI",
+            "Deutsche Telekom"
+          ]
+        }
+      },
+      "segundos": 20.92,
+      "error": null
+    }
+  ]
+}

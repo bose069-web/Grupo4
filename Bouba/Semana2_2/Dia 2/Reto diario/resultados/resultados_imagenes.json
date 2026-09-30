@@ -1,0 +1,805 @@
+{
+  "meta": {
+    "tarea": "analisis de imagenes (vision)",
+    "modelo": "models/gemini-3.5-flash-lite",
+    "fecha": "2026-09-30T11:41:24",
+    "ground_truth": "ground_truth_imagenes.json"
+  },
+  "metricas": {
+    "global": {
+      "imagenes_analizadas": 5,
+      "imagenes_con_error": 0,
+      "ocr": 0.8,
+      "ocr_cobertura_texto": 0.5,
+      "ocr_control_sin_texto": 1.0,
+      "ocr_texto_inventado": [],
+      "descripcion_cobertura": 0.9199999999999999,
+      "escena_accuracy": 0.8,
+      "objetos_f1": 0.60432,
+      "objetos_precision": 0.91428,
+      "objetos_recall": 0.51666,
+      "segundos_medio": 22.15
+    },
+    "por_tipo": {
+      "diagrama medico con etiquetas": {
+        "n": 1,
+        "ocr": 1.0,
+        "descripcion_cobertura": 1.0,
+        "escena_accuracy": 1.0,
+        "objetos_f1": 0.2857
+      },
+      "foto de animal": {
+        "n": 1,
+        "ocr": 1.0,
+        "descripcion_cobertura": 0.8,
+        "escena_accuracy": 1.0,
+        "objetos_f1": 0.5
+      },
+      "foto de paisaje con monumento": {
+        "n": 1,
+        "ocr": 1.0,
+        "descripcion_cobertura": 0.8,
+        "escena_accuracy": 1.0,
+        "objetos_f1": 0.7692
+      },
+      "producto / comida": {
+        "n": 1,
+        "ocr": 1.0,
+        "descripcion_cobertura": 1.0,
+        "escena_accuracy": 1.0,
+        "objetos_f1": 0.8
+      },
+      "render 3D / ilustracion": {
+        "n": 1,
+        "ocr": 0.0,
+        "descripcion_cobertura": 1.0,
+        "escena_accuracy": 0.0,
+        "objetos_f1": 0.6667
+      }
+    },
+    "por_imagen": [
+      {
+        "id": "01_teatro_griego_taormina.jpg",
+        "tipo": "foto de paisaje con monumento",
+        "ocr": 1.0,
+        "ocr_modo": "sin texto (control)",
+        "descripcion": 0.8,
+        "escena": 1.0,
+        "escena_texto": "paisaje/paisaje",
+        "objetos_f1": 0.7692,
+        "objetos_precision": 0.7143,
+        "objetos_recall": 0.8333,
+        "segundos": 22.24
+      },
+      {
+        "id": "02_tipos_fracturas_hueso.jpg",
+        "tipo": "diagrama medico con etiquetas",
+        "ocr": 1.0,
+        "ocr_modo": "cobertura de fragmentos",
+        "descripcion": 1.0,
+        "escena": 1.0,
+        "escena_texto": "grafico/grafico",
+        "objetos_f1": 0.2857,
+        "objetos_precision": 1.0,
+        "objetos_recall": 0.1667,
+        "segundos": 22.0
+      },
+      {
+        "id": "03_perro_pastor_aleman.jpg",
+        "tipo": "foto de animal",
+        "ocr": 1.0,
+        "ocr_modo": "sin texto (control)",
+        "descripcion": 0.8,
+        "escena": 1.0,
+        "escena_texto": "animal/animal",
+        "objetos_f1": 0.5,
+        "objetos_precision": 1.0,
+        "objetos_recall": 0.3333,
+        "segundos": 22.29
+      },
+      {
+        "id": "04_hamburguesa.jpg",
+        "tipo": "producto / comida",
+        "ocr": 1.0,
+        "ocr_modo": "sin texto (control)",
+        "descripcion": 1.0,
+        "escena": 1.0,
+        "escena_texto": "producto/producto",
+        "objetos_f1": 0.8,
+        "objetos_precision": 0.8571,
+        "objetos_recall": 0.75,
+        "segundos": 22.11
+      },
+      {
+        "id": "05_molecula_3d.jpg",
+        "tipo": "render 3D / ilustracion",
+        "ocr": 0.0,
+        "ocr_modo": "cobertura de fragmentos",
+        "descripcion": 1.0,
+        "escena": 0.0,
+        "escena_texto": "otro/grafico",
+        "objetos_f1": 0.6667,
+        "objetos_precision": 1.0,
+        "objetos_recall": 0.5,
+        "segundos": 22.11
+      }
+    ],
+    "fallos_escena": [
+      {
+        "id": "05_molecula_3d.jpg",
+        "esperado": "otro",
+        "predicho": "grafico"
+      }
+    ]
+  },
+  "registros": [
+    {
+      "id": "01_teatro_griego_taormina.jpg",
+      "tipo": "foto de paisaje con monumento",
+      "salida": {
+        "ocr": {
+          "hay_texto": false,
+          "texto": "",
+          "fragmentos": [],
+          "legibilidad": 0.0
+        },
+        "descripcion": {
+          "descripcion": "Fotografia panoramica que muestra las ruinas de un anfiteatro romano antiguo en primer plano, con composicion diagonal. Al fondo se observa una playa de arena dorada y un mar azul turquesa brillante bajo un cielo despejado. Destacan los tonos azul, ocre y verde.",
+          "elementos_clave": [
+            "anfiteatro romano",
+            "playa",
+            "mar",
+            "ruinas",
+            "costa",
+            "cielo"
+          ]
+        },
+        "escena": {
+          "escena": "paisaje",
+          "entorno": "monumento al aire libre junto al mar",
+          "confianza": 0.95
+        },
+        "objetos": {
+          "objetos": [
+            {
+              "nombre": "anfiteatro",
+              "cantidad": 1,
+              "ubicacion": "centro",
+              "confianza": 0.99
+            },
+            {
+              "nombre": "mar",
+              "cantidad": 1,
+              "ubicacion": "arriba a la derecha",
+              "confianza": 0.98
+            },
+            {
+              "nombre": "edificio",
+              "cantidad": 1,
+              "ubicacion": "izquierda",
+              "confianza": 0.95
+            },
+            {
+              "nombre": "playa",
+              "cantidad": 1,
+              "ubicacion": "arriba en el centro",
+              "confianza": 0.92
+            },
+            {
+              "nombre": "arbol",
+              "cantidad": 5,
+              "ubicacion": "izquierda",
+              "confianza": 0.9
+            },
+            {
+              "nombre": "cielo",
+              "cantidad": 1,
+              "ubicacion": "arriba",
+              "confianza": 0.99
+            },
+            {
+              "nombre": "reja",
+              "cantidad": 1,
+              "ubicacion": "abajo",
+              "confianza": 0.88
+            }
+          ]
+        }
+      },
+      "evaluacion": {
+        "ocr": {
+          "hay_texto_esperado": false,
+          "hay_texto_predicho": false,
+          "texto_transcrito": "",
+          "legibilidad": 0.0,
+          "fragmentos_esperados": [],
+          "fragmentos_detectados": [],
+          "cobertura": null,
+          "texto_inventado": false,
+          "puntuacion": 1.0
+        },
+        "descripcion": {
+          "predicho": "Fotografia panoramica que muestra las ruinas de un anfiteatro romano antiguo en primer plano, con composicion diagonal. Al fondo se observa una playa de arena dorada y un mar azul turquesa brillante bajo un cielo despejado. Destacan los tonos azul, ocre y verde.",
+          "elementos_clave": [
+            "anfiteatro romano",
+            "playa",
+            "mar",
+            "ruinas",
+            "costa",
+            "cielo"
+          ],
+          "conceptos_esperados": [
+            "anfiteatro",
+            "mar",
+            "playa",
+            "cerro con edificios",
+            "panoramica"
+          ],
+          "conceptos_cubiertos": [
+            "anfiteatro",
+            "mar",
+            "playa",
+            "panoramica"
+          ],
+          "conceptos_faltantes": [
+            "cerro con edificios"
+          ],
+          "cobertura": 0.8
+        },
+        "escena": {
+          "esperado": "paisaje",
+          "predicho": "paisaje",
+          "acierto": true,
+          "entorno": "monumento al aire libre junto al mar",
+          "confianza": 0.95
+        },
+        "objetos": {
+          "esperados": [
+            "anfiteatro",
+            "edificios",
+            "arboles",
+            "mar",
+            "playa",
+            "nubes"
+          ],
+          "predichos": [
+            "anfiteatro",
+            "mar",
+            "edificio",
+            "playa",
+            "arbol",
+            "cielo",
+            "reja"
+          ],
+          "precision": 0.7143,
+          "recall": 0.8333,
+          "f1": 0.7692,
+          "aciertos": 5,
+          "falsos_positivos": 2,
+          "falsos_negativos": 1,
+          "total_esperados": 6,
+          "total_predichos": 7
+        }
+      },
+      "segundos": 22.24,
+      "error": null
+    },
+    {
+      "id": "02_tipos_fracturas_hueso.jpg",
+      "tipo": "diagrama medico con etiquetas",
+      "salida": {
+        "ocr": {
+          "hay_texto": true,
+          "texto": "Normal Transverse Oblique Spiral Comminuted Avulsed Segmental Impacted Torus Greenstick",
+          "fragmentos": [
+            "Normal",
+            "Transverse",
+            "Oblique",
+            "Spiral",
+            "Commin",
+            "Avulsed",
+            "Segmental",
+            "Impacted",
+            "Torus",
+            "Greens"
+          ],
+          "legibilidad": 0.95
+        },
+        "descripcion": {
+          "descripcion": "Imagen ilustrativa y educativa que muestra diferentes tipos de fracturas óseas en dos filas sobre fondo blanco. Predominan los tonos gris, blanco y rojo. Presenta esquemas de huesos con etiquetas de texto en inglés para cada lesión, organizados de manera clara y simétrica.",
+          "elementos_clave": [
+            "fracturas óseas",
+            "huesos",
+            "ilustración médica",
+            "etiquetas de texto",
+            "fondo blanco",
+            "esquemas"
+          ]
+        },
+        "escena": {
+          "escena": "grafico",
+          "entorno": "diagrama educativo o infografia que ilustra tipos de fracturas oseas",
+          "confianza": 0.98
+        },
+        "objetos": {
+          "objetos": [
+            {
+              "nombre": "hueso",
+              "cantidad": 10,
+              "ubicacion": "centro",
+              "confianza": 0.99
+            }
+          ]
+        }
+      },
+      "evaluacion": {
+        "ocr": {
+          "hay_texto_esperado": true,
+          "hay_texto_predicho": true,
+          "texto_transcrito": "Normal Transverse Oblique Spiral Comminuted Avulsed Segmental Impacted Torus Greenstick",
+          "legibilidad": 0.95,
+          "fragmentos_esperados": [
+            "Normal",
+            "Transverse",
+            "Oblique",
+            "Spiral",
+            "Comminuted",
+            "Impacted",
+            "Segmental",
+            "Torus",
+            "Greenstick"
+          ],
+          "fragmentos_detectados": [
+            "Normal",
+            "Transverse",
+            "Oblique",
+            "Spiral",
+            "Comminuted",
+            "Impacted",
+            "Segmental",
+            "Torus",
+            "Greenstick"
+          ],
+          "cobertura": 1.0,
+          "texto_inventado": false,
+          "puntuacion": 1.0
+        },
+        "descripcion": {
+          "predicho": "Imagen ilustrativa y educativa que muestra diferentes tipos de fracturas óseas en dos filas sobre fondo blanco. Predominan los tonos gris, blanco y rojo. Presenta esquemas de huesos con etiquetas de texto en inglés para cada lesión, organizados de manera clara y simétrica.",
+          "elementos_clave": [
+            "fracturas óseas",
+            "huesos",
+            "ilustración médica",
+            "etiquetas de texto",
+            "fondo blanco",
+            "esquemas"
+          ],
+          "conceptos_esperados": [
+            "fracturas",
+            "hueso",
+            "diagrama",
+            "tipos",
+            "medico"
+          ],
+          "conceptos_cubiertos": [
+            "fracturas",
+            "hueso",
+            "diagrama",
+            "tipos",
+            "medico"
+          ],
+          "conceptos_faltantes": [],
+          "cobertura": 1.0
+        },
+        "escena": {
+          "esperado": "grafico",
+          "predicho": "grafico",
+          "acierto": true,
+          "entorno": "diagrama educativo o infografia que ilustra tipos de fracturas oseas",
+          "confianza": 0.98
+        },
+        "objetos": {
+          "esperados": [
+            "huesos",
+            "femur",
+            "rotula",
+            "etiquetas",
+            "flechas",
+            "imagenes medicas"
+          ],
+          "predichos": [
+            "hueso"
+          ],
+          "precision": 1.0,
+          "recall": 0.1667,
+          "f1": 0.2857,
+          "aciertos": 1,
+          "falsos_positivos": 0,
+          "falsos_negativos": 5,
+          "total_esperados": 6,
+          "total_predichos": 1
+        }
+      },
+      "segundos": 22.0,
+      "error": null
+    },
+    {
+      "id": "03_perro_pastor_aleman.jpg",
+      "tipo": "foto de animal",
+      "salida": {
+        "ocr": {
+          "hay_texto": false,
+          "texto": "",
+          "fragmentos": [],
+          "legibilidad": 0.0
+        },
+        "descripcion": {
+          "descripcion": "Fotografia a color que muestra un perro pastor aleman tumbado sobre un cesped verde brillante. La composicion centra la atencion en el animal con pelaje marron y negro, destacando su postura relajada y mirada atenta. Predominan los tonos verdes y marrones, sin textos visibles en la escena.",
+          "elementos_clave": [
+            "perro",
+            "pastor aleman",
+            "cesped",
+            "verde",
+            "marron",
+            "animal",
+            "fotografia"
+          ]
+        },
+        "escena": {
+          "escena": "animal",
+          "entorno": "cesped",
+          "confianza": 0.99
+        },
+        "objetos": {
+          "objetos": [
+            {
+              "nombre": "perro",
+              "cantidad": 1,
+              "ubicacion": "centro",
+              "confianza": 0.99
+            }
+          ]
+        }
+      },
+      "evaluacion": {
+        "ocr": {
+          "hay_texto_esperado": false,
+          "hay_texto_predicho": false,
+          "texto_transcrito": "",
+          "legibilidad": 0.0,
+          "fragmentos_esperados": [],
+          "fragmentos_detectados": [],
+          "cobertura": null,
+          "texto_inventado": false,
+          "puntuacion": 1.0
+        },
+        "descripcion": {
+          "predicho": "Fotografia a color que muestra un perro pastor aleman tumbado sobre un cesped verde brillante. La composicion centra la atencion en el animal con pelaje marron y negro, destacando su postura relajada y mirada atenta. Predominan los tonos verdes y marrones, sin textos visibles en la escena.",
+          "elementos_clave": [
+            "perro",
+            "pastor aleman",
+            "cesped",
+            "verde",
+            "marron",
+            "animal",
+            "fotografia"
+          ],
+          "conceptos_esperados": [
+            "perro",
+            "echado",
+            "hierba",
+            "exterior",
+            "pelaje"
+          ],
+          "conceptos_cubiertos": [
+            "perro",
+            "echado",
+            "hierba",
+            "pelaje"
+          ],
+          "conceptos_faltantes": [
+            "exterior"
+          ],
+          "cobertura": 0.8
+        },
+        "escena": {
+          "esperado": "animal",
+          "predicho": "animal",
+          "acierto": true,
+          "entorno": "cesped",
+          "confianza": 0.99
+        },
+        "objetos": {
+          "esperados": [
+            "perro",
+            "hierba",
+            "exterior"
+          ],
+          "predichos": [
+            "perro"
+          ],
+          "precision": 1.0,
+          "recall": 0.3333,
+          "f1": 0.5,
+          "aciertos": 1,
+          "falsos_positivos": 0,
+          "falsos_negativos": 2,
+          "total_esperados": 3,
+          "total_predichos": 1
+        }
+      },
+      "segundos": 22.29,
+      "error": null
+    },
+    {
+      "id": "04_hamburguesa.jpg",
+      "tipo": "producto / comida",
+      "salida": {
+        "ocr": {
+          "hay_texto": false,
+          "texto": "",
+          "fragmentos": [],
+          "legibilidad": 0
+        },
+        "descripcion": {
+          "descripcion": "Fotografia gastronomica en primer plano de una hamburguesa completa. Muestra pan con sesamo, carne jugosa, queso fundido, tocino crujiente, lechuga y salsa sobre fondo oscuro. La composicion es vertical y centrada, con tonos marrones, amarillos y rojos dominantes.",
+          "elementos_clave": [
+            "hamburguesa",
+            "queso fundido",
+            "carne",
+            "tocino",
+            "pan con sesamo",
+            "fondo oscuro"
+          ]
+        },
+        "escena": {
+          "escena": "producto",
+          "entorno": "estudio",
+          "confianza": 0.99
+        },
+        "objetos": {
+          "objetos": [
+            {
+              "nombre": "hamburguesa",
+              "cantidad": 1,
+              "ubicacion": "centro",
+              "confianza": 0.99
+            },
+            {
+              "nombre": "pan",
+              "cantidad": 2,
+              "ubicacion": "arriba y abajo",
+              "confianza": 0.98
+            },
+            {
+              "nombre": "carne",
+              "cantidad": 1,
+              "ubicacion": "centro",
+              "confianza": 0.95
+            },
+            {
+              "nombre": "queso",
+              "cantidad": 1,
+              "ubicacion": "centro",
+              "confianza": 0.94
+            },
+            {
+              "nombre": "tocino",
+              "cantidad": 5,
+              "ubicacion": "arriba del centro",
+              "confianza": 0.92
+            },
+            {
+              "nombre": "lechuga",
+              "cantidad": 1,
+              "ubicacion": "arriba",
+              "confianza": 0.9
+            },
+            {
+              "nombre": "salsa",
+              "cantidad": 1,
+              "ubicacion": "abajo",
+              "confianza": 0.88
+            }
+          ]
+        }
+      },
+      "evaluacion": {
+        "ocr": {
+          "hay_texto_esperado": false,
+          "hay_texto_predicho": false,
+          "texto_transcrito": "",
+          "legibilidad": 0,
+          "fragmentos_esperados": [],
+          "fragmentos_detectados": [],
+          "cobertura": null,
+          "texto_inventado": false,
+          "puntuacion": 1.0
+        },
+        "descripcion": {
+          "predicho": "Fotografia gastronomica en primer plano de una hamburguesa completa. Muestra pan con sesamo, carne jugosa, queso fundido, tocino crujiente, lechuga y salsa sobre fondo oscuro. La composicion es vertical y centrada, con tonos marrones, amarillos y rojos dominantes.",
+          "elementos_clave": [
+            "hamburguesa",
+            "queso fundido",
+            "carne",
+            "tocino",
+            "pan con sesamo",
+            "fondo oscuro"
+          ],
+          "conceptos_esperados": [
+            "hamburguesa",
+            "pan",
+            "carne",
+            "queso",
+            "bacon",
+            "lechuga"
+          ],
+          "conceptos_cubiertos": [
+            "hamburguesa",
+            "pan",
+            "carne",
+            "queso",
+            "bacon",
+            "lechuga"
+          ],
+          "conceptos_faltantes": [],
+          "cobertura": 1.0
+        },
+        "escena": {
+          "esperado": "producto",
+          "predicho": "producto",
+          "acierto": true,
+          "entorno": "estudio",
+          "confianza": 0.99
+        },
+        "objetos": {
+          "esperados": [
+            "hamburguesa",
+            "pan",
+            "carne",
+            "queso",
+            "bacon",
+            "lechuga",
+            "tomate",
+            "salsa"
+          ],
+          "predichos": [
+            "hamburguesa",
+            "pan",
+            "carne",
+            "queso",
+            "tocino",
+            "lechuga",
+            "salsa"
+          ],
+          "precision": 0.8571,
+          "recall": 0.75,
+          "f1": 0.8,
+          "aciertos": 6,
+          "falsos_positivos": 1,
+          "falsos_negativos": 2,
+          "total_esperados": 8,
+          "total_predichos": 7
+        }
+      },
+      "segundos": 22.11,
+      "error": null
+    },
+    {
+      "id": "05_molecula_3d.jpg",
+      "tipo": "render 3D / ilustracion",
+      "salida": {
+        "ocr": {
+          "hay_texto": false,
+          "texto": "",
+          "fragmentos": [],
+          "legibilidad": 0
+        },
+        "descripcion": {
+          "descripcion": "Imagen digital en 3D con composicion circular que muestra una molecula azul brillante con tres esferas interconectadas. Predominan los tonos azules con efectos de luz y burbujas flotantes alrededor, creando un aspecto cientifico y limpio. No contiene textos relevantes.",
+          "elementos_clave": [
+            "molecula 3D",
+            "esferas azules",
+            "composicion circular",
+            "burbujas",
+            "iluminacion digital",
+            "ciencia"
+          ]
+        },
+        "escena": {
+          "escena": "grafico",
+          "entorno": "representacion grafica de una molecula en 3d",
+          "confianza": 0.95
+        },
+        "objetos": {
+          "objetos": [
+            {
+              "nombre": "molecula",
+              "cantidad": 1,
+              "ubicacion": "centro",
+              "confianza": 0.99
+            },
+            {
+              "nombre": "burbuja",
+              "cantidad": 20,
+              "ubicacion": "fondo",
+              "confianza": 0.85
+            }
+          ]
+        }
+      },
+      "evaluacion": {
+        "ocr": {
+          "hay_texto_esperado": true,
+          "hay_texto_predicho": false,
+          "texto_transcrito": "",
+          "legibilidad": 0,
+          "fragmentos_esperados": [
+            "pngtree",
+            "PNG"
+          ],
+          "fragmentos_detectados": [],
+          "cobertura": 0.0,
+          "texto_inventado": false,
+          "puntuacion": 0.0
+        },
+        "descripcion": {
+          "predicho": "Imagen digital en 3D con composicion circular que muestra una molecula azul brillante con tres esferas interconectadas. Predominan los tonos azules con efectos de luz y burbujas flotantes alrededor, creando un aspecto cientifico y limpio. No contiene textos relevantes.",
+          "elementos_clave": [
+            "molecula 3D",
+            "esferas azules",
+            "composicion circular",
+            "burbujas",
+            "iluminacion digital",
+            "ciencia"
+          ],
+          "conceptos_esperados": [
+            "molecula",
+            "3d",
+            "azul",
+            "esferas",
+            "ciencia"
+          ],
+          "conceptos_cubiertos": [
+            "molecula",
+            "3d",
+            "azul",
+            "esferas",
+            "ciencia"
+          ],
+          "conceptos_faltantes": [],
+          "cobertura": 1.0
+        },
+        "escena": {
+          "esperado": "otro",
+          "predicho": "grafico",
+          "acierto": false,
+          "entorno": "representacion grafica de una molecula en 3d",
+          "confianza": 0.95
+        },
+        "objetos": {
+          "esperados": [
+            "molecula",
+            "esferas",
+            "burbujas",
+            "modelo 3d"
+          ],
+          "predichos": [
+            "molecula",
+            "burbuja"
+          ],
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "aciertos": 2,
+          "falsos_positivos": 0,
+          "falsos_negativos": 2,
+          "total_esperados": 4,
+          "total_predichos": 2
+        }
+      },
+      "segundos": 22.11,
+      "error": null
+    }
+  ]
+}
