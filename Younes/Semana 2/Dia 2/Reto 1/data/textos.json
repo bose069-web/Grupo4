@@ -1,0 +1,82 @@
+[
+  {
+    "id": "T01",
+    "source": "reseña",
+    "language_reference": "español",
+    "sentiment_reference": "positive",
+    "entities_reference": [{"name": "Luna Café", "type": "ORGANIZATION"}, {"name": "Valencia", "type": "LOCATION"}],
+    "text": "Ayer visité Luna Café en Valencia y me encantó el servicio. El café estaba buenísimo y volveré pronto."
+  },
+  {
+    "id": "T02",
+    "source": "noticia",
+    "language_reference": "español",
+    "sentiment_reference": "neutral",
+    "entities_reference": [{"name": "Barcelona", "type": "LOCATION"}, {"name": "lunes", "type": "DATE"}],
+    "text": "El ayuntamiento de Barcelona anunció el lunes que las obras de la estación comenzarán en septiembre."
+  },
+  {
+    "id": "T03",
+    "source": "email",
+    "language_reference": "español",
+    "sentiment_reference": "negative",
+    "entities_reference": [{"name": "María López", "type": "PERSON"}, {"name": "Nube Azul", "type": "ORGANIZATION"}],
+    "text": "Hola, María López: llevo tres días sin poder acceder a mi cuenta de Nube Azul y soporte todavía no me ha contestado. Necesito una solución hoy."
+  },
+  {
+    "id": "T04",
+    "source": "reseña",
+    "language_reference": "inglés",
+    "sentiment_reference": "positive",
+    "entities_reference": [{"name": "Northstar", "type": "ORGANIZATION"}, {"name": "Ava Chen", "type": "PERSON"}],
+    "text": "Northstar delivered my order early, and Ava Chen from customer care solved my issue in minutes. I am very happy with the service."
+  },
+  {
+    "id": "T05",
+    "source": "noticia",
+    "language_reference": "inglés",
+    "sentiment_reference": "neutral",
+    "entities_reference": [{"name": "Lisbon", "type": "LOCATION"}, {"name": "Friday", "type": "DATE"}],
+    "text": "The transport agency said on Friday that two new bus routes will begin operating in Lisbon next month."
+  },
+  {
+    "id": "T06",
+    "source": "email",
+    "language_reference": "inglés",
+    "sentiment_reference": "negative",
+    "entities_reference": [{"name": "Jordan Lee", "type": "PERSON"}, {"name": "BrightDesk", "type": "ORGANIZATION"}],
+    "text": "Jordan Lee, I am disappointed that BrightDesk charged me twice and has not replied to my refund request. Please fix this immediately."
+  },
+  {
+    "id": "T07",
+    "source": "reseña",
+    "language_reference": "español",
+    "sentiment_reference": "negative",
+    "entities_reference": [{"name": "Hotel Mirador", "type": "ORGANIZATION"}, {"name": "Sevilla", "type": "LOCATION"}],
+    "text": "La habitación del Hotel Mirador en Sevilla estaba sucia y era muy ruidosa. No recomiendo alojarse allí."
+  },
+  {
+    "id": "T08",
+    "source": "noticia",
+    "language_reference": "español",
+    "sentiment_reference": "positive",
+    "entities_reference": [{"name": "Instituto Mar", "type": "ORGANIZATION"}, {"name": "Diego Ruiz", "type": "PERSON"}],
+    "text": "El Instituto Mar reconoció a Diego Ruiz por organizar una campaña de recogida de alimentos que reunió a más de cien voluntarios."
+  },
+  {
+    "id": "T09",
+    "source": "email",
+    "language_reference": "inglés",
+    "sentiment_reference": "neutral",
+    "entities_reference": [{"name": "Priya Shah", "type": "PERSON"}, {"name": "Cedar Labs", "type": "ORGANIZATION"}, {"name": "Tuesday", "type": "DATE"}],
+    "text": "Hello Priya Shah, Cedar Labs has scheduled the project review for Tuesday at 10:00 a.m. Please confirm whether you can attend."
+  },
+  {
+    "id": "T10",
+    "source": "reseña",
+    "language_reference": "español",
+    "sentiment_reference": "neutral",
+    "entities_reference": [{"name": "Museo del Puerto", "type": "ORGANIZATION"}, {"name": "jueves", "type": "DATE"}],
+    "text": "Visité el Museo del Puerto el jueves. La entrada cuesta ocho euros y la exposición permanente ocupa dos salas."
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "I01",
+    "image_path": "images/documento_escaneado.jpg",
+    "expected_scene_category": "document",
+    "expected_ocr": "AVISO BIBLIOTECA CENTRAL Horario: 9:00 - 17:00 Valencia 2025 Entrada gratuita",
+    "expected_objects": null
+  },
+  {
+    "id": "I02",
+    "image_path": "images/escena_urbana.jpg",
+    "expected_scene_category": "urban",
+    "expected_ocr": "",
+    "expected_objects": ["autobús", "coche", "árbol", "semáforo", "edificios"]
+  },
+  {
+    "id": "I03",
+    "image_path": "images/producto.jpg",
+    "expected_scene_category": "product",
+    "expected_ocr": "ACERO 750 ml",
+    "expected_objects": ["botella", "taza", "limón"]
+  },
+  {
+    "id": "I04",
+    "image_path": "images/naturaleza.jpg",
+    "expected_scene_category": "nature",
+    "expected_ocr": "",
+    "expected_objects": ["montañas", "río", "árboles", "sol"]
+  },
+  {
+    "id": "I05",
+    "image_path": "images/grafico.jpg",
+    "expected_scene_category": "chart",
+    "expected_ocr": "VENTAS 2025 Unidades por mes 10 ENERO 15 FEBRERO 12 MARZO",
+    "expected_objects": null
+  }
+]
