@@ -1,0 +1,24 @@
+# Preguntas que hacen los "usuarios" de la prueba (una por línea).
+# Están ordenadas de más a menos frecuente: con --zipf 1 (por defecto) las de
+# arriba salen más veces, como las preguntas típicas de un chat real.
+# Las líneas que empiezan por # se ignoran.
+¿Qué es Docker y para qué sirve?
+¿Cuál es la diferencia entre una imagen y un contenedor de Docker?
+Explica qué es una dirección IP privada y pon dos ejemplos.
+¿Qué hace el comando docker compose up -d?
+Dame tres consejos para proteger un servidor SSH.
+¿Qué es un volumen en Docker y por qué se usa?
+Explica la diferencia entre TCP y UDP en pocas líneas.
+¿Para qué sirve un servidor DNS?
+Escribe un script de bash que haga una copia de seguridad comprimida de /etc con la fecha en el nombre.
+¿Qué es una VLAN y qué ventajas tiene?
+Explica qué es una API REST a alguien que empieza a programar.
+¿Qué diferencia hay entre RAID 1 y RAID 5?
+Escribe una función en Python que compruebe si una contraseña es segura (longitud, mayúsculas, números y símbolos).
+¿Qué es el modelo OSI? Resume sus capas en una lista.
+¿Cómo funciona DHCP paso a paso?
+Explica qué es un modelo de lenguaje grande (LLM) y qué significa cuantizarlo.
+¿Qué ventajas tiene usar Kubernetes frente a Docker Compose?
+Redacta un correo breve y formal pidiendo acceso a una máquina virtual de Azure para un proyecto de clase.
+Compara MySQL y PostgreSQL en una tabla con 4 criterios.
+¿Qué es un balanceador de carga y cuándo hace falta?

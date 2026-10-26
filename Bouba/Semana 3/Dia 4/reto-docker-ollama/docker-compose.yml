@@ -1,0 +1,186 @@
+# =============================================================================
+#  Stack del reto: Ollama (Gemma 4 E4B) + API Python (FastAPI) + frontend
+#
+#  Modo LOCAL   (usa .env):           docker compose up -d --build
+#  Modo REMOTO  (usa .env.remoto):    docker compose --env-file .env.remoto up -d --build
+#
+#  La API decide a qué Ollama hablar SOLO con la variable BACKEND_URL.
+#   - local:  http://ollama:11434                  (contenedor en la red interna)
+#   - remoto: http://host.docker.internal:11435    (remoto simulado, por el host)
+#             http://IP_DE_OTRO_PC:11435           (Ollama de un compañero)
+#             http://IP_VM_AZURE:11434             (cuando haya acceso a Azure)
+# =============================================================================
+name: reto-docker-ollama
+
+# Variables comunes a la API y al chat por terminal (ancla YAML reutilizable)
+x-backend-env: &backend-env
+  BACKEND_URL: ${BACKEND_URL:-http://ollama:11434}
+  BACKEND_API_KEY: ${BACKEND_API_KEY:-}
+  MODEL_NAME: ${MODEL_NAME:-gemma4:e4b}
+  REQUEST_TIMEOUT: ${REQUEST_TIMEOUT:-300}
+
+# Configuración común a los dos servicios de Ollama (misma imagen, mismo volumen)
+x-ollama-base: &ollama-base
+  build:
+    context: ./ollama
+    args:
+      MODEL_NAME: ${MODEL_NAME:-gemma4:e4b}
+      PRELOAD_IN_IMAGE: ${PRELOAD_IN_IMAGE:-false}
+  image: reto/ollama-gemma4:latest
+  environment:
+    MODEL_NAME: ${MODEL_NAME:-gemma4:e4b}
+    OLLAMA_KEEP_ALIVE: ${OLLAMA_KEEP_ALIVE:-30m}
+    # Ajustes de rendimiento del servidor (vacío = valor por defecto de Ollama).
+    # Se activan con optimizaciones/2-parametros.env
+    OLLAMA_NUM_PARALLEL: ${OLLAMA_NUM_PARALLEL:-}       # peticiones atendidas a la vez
+    OLLAMA_MAX_QUEUE: ${OLLAMA_MAX_QUEUE:-}             # peticiones en cola antes de responder 503
+    OLLAMA_CONTEXT_LENGTH: ${OLLAMA_CONTEXT_LENGTH:-}   # contexto por petición (menos = menos RAM)
+    OLLAMA_FLASH_ATTENTION: ${OLLAMA_FLASH_ATTENTION:-}
+    OLLAMA_KV_CACHE_TYPE: ${OLLAMA_KV_CACHE_TYPE:-}     # f16 / q8_0 / q4_0 (requiere flash attention)
+  volumes:
+    - ollama_models:/root/.ollama          # modelos persistentes (no se pierden al borrar el contenedor)
+  healthcheck:
+    # Sano = el servidor responde y el modelo ya está descargado
+    test: ["CMD-SHELL", "ollama show \"$$MODEL_NAME\" >/dev/null 2>&1 || exit 1"]
+    interval: 15s
+    timeout: 10s
+    retries: 3
+    start_period: 60m                      # margen para la primera descarga (~9.6 GB)
+    start_interval: 5s
+  restart: unless-stopped
+
+services:
+  # ---------------------------------------------------------------------------
+  # Ollama LOCAL con Gemma 4 E4B (perfil "local").
+  # No publica puertos: solo la API lo ve, a través de la red "backend".
+  # ---------------------------------------------------------------------------
+  ollama:
+    <<: *ollama-base
+    profiles: ["local"]
+    networks:
+      - backend
+
+  # ---------------------------------------------------------------------------
+  # Ollama REMOTO SIMULADO (perfil "remoto-simulado"). Sustituye a la VM de
+  # Azure mientras no haya acceso. Está en su propia red, SIN conexión con la
+  # API: la API solo puede llegar a él por el puerto publicado en el host
+  # (host.docker.internal:11435), igual que llegaría a otra máquina.
+  # Reutiliza el volumen, así que no vuelve a descargar el modelo.
+  # ---------------------------------------------------------------------------
+  ollama-remoto:
+    <<: *ollama-base
+    profiles: ["remoto-simulado"]
+    ports:
+      - "${REMOTO_PORT:-11435}:11434"
+    networks:
+      - remoto
+
+  # ---------------------------------------------------------------------------
+  # API Python (FastAPI). Conecta con el Ollama que diga BACKEND_URL.
+  # ---------------------------------------------------------------------------
+  api:
+    build: ./api
+    image: reto/chat-api:latest
+    environment:
+      <<: *backend-env
+      CORS_ORIGINS: ${CORS_ORIGINS:-*}
+      # Optimizaciones de la API (vacío / false = desactivadas)
+      CACHE_ENABLED: ${CACHE_ENABLED:-false}            # optimizaciones/1-cache.env
+      CACHE_TTL: ${CACHE_TTL:-600}
+      CACHE_MAX_ITEMS: ${CACHE_MAX_ITEMS:-500}
+      MODEL_TEMPERATURE: ${MODEL_TEMPERATURE:-}         # optimizaciones/2-parametros.env
+      MODEL_NUM_PREDICT: ${MODEL_NUM_PREDICT:-}
+      MODEL_NUM_CTX: ${MODEL_NUM_CTX:-}
+      MODEL_THINK: ${MODEL_THINK:-}
+    ports:
+      - "${API_PORT:-8000}:8000"           # http://localhost:8000/docs (Swagger)
+    networks:
+      - frontend
+      - backend
+    extra_hosts:
+      - "host.docker.internal:host-gateway" # en Linux; Docker Desktop ya lo trae
+    depends_on:
+      # required: false -> si el servicio no está en el perfil activo, se ignora.
+      # Solo sirve para que el arranque espere a que el modelo esté listo.
+      ollama:
+        condition: service_healthy
+        required: false
+      ollama-remoto:
+        condition: service_healthy
+        required: false
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # Frontend web mínimo (nginx). DAW/DAM lo sustituye por el suyo.
+  # nginx hace de proxy inverso: /api/* -> api:8000
+  # ---------------------------------------------------------------------------
+  frontend:
+    build: ./frontend
+    image: reto/chat-frontend:latest
+    ports:
+      - "${WEB_PORT:-8080}:80"             # http://localhost:8080
+    networks:
+      - frontend
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # Script de chat por terminal (misma imagen que la API, otro comando).
+  # Perfil "cli": no arranca con "up". Se usa con:  docker compose run --rm chat
+  # ---------------------------------------------------------------------------
+  chat:
+    build: ./api
+    image: reto/chat-api:latest
+    profiles: ["cli"]
+    command: ["python", "chat.py"]
+    environment: *backend-env
+    stdin_open: true
+    tty: true
+    networks:
+      - backend
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      ollama:
+        condition: service_healthy
+        required: false
+      ollama-remoto:
+        condition: service_healthy
+        required: false
+
+# -----------------------------------------------------------------------------
+# Redes: segmentación
+#   frontend: frontend <-> api           (el navegador entra por aquí)
+#   backend:  api <-> ollama             (el frontend NO ve a Ollama)
+#   remoto:   solo ollama-remoto         (aislado: se llega por el puerto del host)
+# Si las subredes chocan con tu red (error "Pool overlaps"), cámbialas.
+# -----------------------------------------------------------------------------
+networks:
+  frontend:
+    name: reto_frontend
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.10.0/24
+  backend:
+    name: reto_backend
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.20.0/24
+  remoto:
+    name: reto_remoto
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.30.0/24
+
+# -----------------------------------------------------------------------------
+# Volúmenes: los modelos descargados sobreviven a "docker compose down"
+# (solo se borran con "docker compose down -v")
+# -----------------------------------------------------------------------------
+volumes:
+  ollama_models:
+    name: reto_ollama_models

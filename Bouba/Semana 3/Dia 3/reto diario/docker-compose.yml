@@ -1,0 +1,51 @@
+name: reto-diario
+
+services:
+  api:
+    build: .
+    environment:
+      BACKEND_URL: ${BACKEND_URL:-http://ollama:11434}
+      BACKEND_MODE: ${BACKEND_MODE:-local}
+      MODEL_NAME: ${MODEL_NAME:-gemma3:1b}
+      BACKEND_API_KEY: ${BACKEND_API_KEY:-}
+      REQUEST_TIMEOUT: ${REQUEST_TIMEOUT:-300}
+    ports:
+      - "${API_PORT:-8000}:8000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    profiles: [local]
+    environment:
+      MODEL_NAME: ${MODEL_NAME:-gemma3:1b}
+    volumes:
+      - ollama_models:/root/.ollama
+    entrypoint: ["/bin/sh", "-c"]
+    command: >-
+      ollama serve &
+      server_pid=$$!;
+      until ollama list >/dev/null 2>&1; do sleep 2; done;
+      ollama pull "$${MODEL_NAME}" || exit 1;
+      wait "$$server_pid"
+    healthcheck:
+      test: ["CMD-SHELL", "ollama show \"$$MODEL_NAME\" >/dev/null 2>&1 || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 3
+      start_period: 30m
+    restart: unless-stopped
+
+volumes:
+  ollama_models:
