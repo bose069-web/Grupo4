@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Prototipo de Speech-to-Text para el reto del Dia 3">
+  <title>Voz Clara | Speech-to-Text</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Voz Clara, inicio"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>voz clara</span></a>
+    <div class="topbar-meta"><span class="status-dot"></span> prototipo activo <span class="divider"></span> día 3</div>
+  </header>
+  <main id="inicio">
+    <section class="intro"><div class="eyebrow">SERVICIOS DE VOZ E INTERFACES <span>09.09</span></div><h1>Tu voz,<br><em>en texto.</em></h1><div><p class="intro-copy">Un espacio de prueba para capturar, transcribir y comparar tres audios en español directamente desde el navegador.</p><a class="jump-link" href="#studio">abrir estudio <span aria-hidden="true">↓</span></a></div></section>
+    <section class="studio" id="studio"><div class="section-heading"><div><span class="section-number">01</span><h2>Estudio de captura</h2></div><p>Web Speech API · sin API key · tiempo real</p></div>
+      <div class="studio-grid"><div class="capture-panel"><div class="panel-topline"><span id="captureMode">LISTO PARA GRABAR</span><span id="timer">00:00</span></div><div class="soundscape" id="soundscape" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><button class="record-button" id="recordButton" type="button" aria-label="Iniciar grabación"><span class="record-icon"></span><span id="recordLabel">iniciar grabación</span></button><p class="capture-hint" id="captureHint">Pulsa el botón y concede permiso para usar el micrófono.</p></div>
+        <div class="transcript-panel"><div class="panel-topline"><span>TRANSCRIPCIÓN EN DIRECTO</span><span class="language-chip">ES-ES</span></div><div class="transcript-box" id="transcriptBox" aria-live="polite"><p class="placeholder" id="placeholder">Lo que digas aparecerá aquí<span class="cursor">|</span></p><p class="final-text" id="finalText"></p><p class="interim-text" id="interimText"></p></div><div class="transcript-footer"><span id="wordCount">0 palabras</span><button class="text-button" id="clearButton" type="button">limpiar <span aria-hidden="true">↗</span></button></div></div></div><div class="notice" id="browserNotice" hidden></div>
+    </section>
+    <section class="tests" id="pruebas"><div class="section-heading"><div><span class="section-number">02</span><h2>Pruebas de precisión</h2></div><p>3 registros · comparación manual</p></div><div class="test-grid" id="testGrid"><article class="test-card active" data-test="1"><div class="test-card-head"><span class="test-id">PRUEBA 01</span><span class="test-state">pendiente</span></div><h3>Presentación breve</h3><p>“Hola, mi nombre es ... y estoy probando la transcripción.”</p><button class="select-test" type="button">seleccionar</button></article><article class="test-card" data-test="2"><div class="test-card-head"><span class="test-id">PRUEBA 02</span><span class="test-state">pendiente</span></div><h3>Frase técnica</h3><p>“La interfaz conecta un micrófono con una API de voz.”</p><button class="select-test" type="button">seleccionar</button></article><article class="test-card" data-test="3"><div class="test-card-head"><span class="test-id">PRUEBA 03</span><span class="test-state">pendiente</span></div><h3>Frase cotidiana</h3><p>“Mañana revisaremos los resultados del proyecto.”</p><button class="select-test" type="button">seleccionar</button></article></div></section>
+    <section class="comparison" id="comparativa"><div class="section-heading"><div><span class="section-number">03</span><h2>Comparativa de métodos</h2></div><p>anota tus observaciones</p></div><div class="comparison-grid"><div class="method method-browser"><div class="method-label">MÉTODO A <span>recomendado DAW</span></div><h3>Web Speech API</h3><ul><li class="positive">Transcripción en tiempo real</li><li class="positive">Gratuita y sin API key</li><li class="negative">Depende del navegador</li><li class="negative">Precisión variable con ruido</li></ul></div><div class="method method-gemini"><div class="method-label">MÉTODO B <span>procesamiento por lotes</span></div><h3>Gemini + audio</h3><ul><li class="positive">Mayor comprensión contextual</li><li class="positive">Admite WAV y MP3</li><li class="negative">Requiere API key y conexión</li><li class="negative">No es tiempo real</li></ul></div></div><label class="notes-label" for="notes">Notas de precisión / diferencias observadas</label><textarea id="notes" rows="4" placeholder="Compara aquí el resultado del navegador con la transcripción de Gemini..."></textarea><div class="actions"><button class="secondary-button" id="downloadButton" type="button">descargar informe <span aria-hidden="true">↓</span></button><span id="saveState" role="status"></span></div></section>
+  </main><footer><span>DI6 · GEMINI MULTIMODAL</span><span>Speech-to-Text / 2026</span></footer><script src="app.js"></script>
+</body>
+</html>

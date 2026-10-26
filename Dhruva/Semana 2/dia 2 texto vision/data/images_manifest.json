@@ -1,0 +1,7 @@
+[
+  {"id": "I01", "path": "assets/test_images/01_invoice.png", "type": "document", "task": "OCR, scene classification, and object detection", "mime_type": "image/png"},
+  {"id": "I02", "path": "assets/test_images/02_urban.png", "type": "urban", "task": "scene classification and object detection", "mime_type": "image/png"},
+  {"id": "I03", "path": "assets/test_images/03_product.png", "type": "product", "task": "product description, OCR, and object detection", "mime_type": "image/png"},
+  {"id": "I04", "path": "assets/test_images/04_receipt.png", "type": "document", "task": "OCR and object detection", "mime_type": "image/png"},
+  {"id": "I05", "path": "assets/test_images/05_workspace.png", "type": "indoor", "task": "scene classification and object detection", "mime_type": "image/png"}
+]

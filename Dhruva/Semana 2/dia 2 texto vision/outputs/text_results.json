@@ -1,0 +1,265 @@
+{
+  "model": "gemini-2.5-flash",
+  "mode": "mock",
+  "sample_count": 10,
+  "language_accuracy_against_hint": 1.0,
+  "average_language_confidence": 0.65,
+  "results": [
+    {
+      "id": "T01",
+      "type": "news",
+      "language_hint": "es",
+      "text": "La alcaldesa de Madrid anunció ayer un nuevo plan de movilidad eléctrica para reducir las emisiones en un 30% antes de 2030.",
+      "analysis": {
+        "language": "es",
+        "language_confidence": 0.65,
+        "entities": [
+          {
+            "text": "La",
+            "label": "PROPER_NOUN"
+          },
+          {
+            "text": "Madrid",
+            "label": "PROPER_NOUN"
+          }
+        ],
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "summary": "La alcaldesa de Madrid anunció ayer un nuevo plan de movilidad eléctrica para reducir las emisiones en un 30% antes de 2..."
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "T02",
+      "type": "news",
+      "language_hint": "en",
+      "text": "The European Space Agency confirmed that its climate satellite will begin collecting ocean temperature data next month.",
+      "analysis": {
+        "language": "en",
+        "language_confidence": 0.65,
+        "entities": [
+          {
+            "text": "The European Space Agency",
+            "label": "PROPER_NOUN"
+          }
+        ],
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "summary": "The European Space Agency confirmed that its climate satellite will begin collecting ocean temperature data next month"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "T03",
+      "type": "news",
+      "language_hint": "pt",
+      "text": "O Ministério da Saúde lançou uma campanha nacional para aumentar a vacinação contra a gripe durante o inverno.",
+      "analysis": {
+        "language": "pt",
+        "language_confidence": 0.65,
+        "entities": [
+          {
+            "text": "O Ministério",
+            "label": "PROPER_NOUN"
+          },
+          {
+            "text": "Saúde",
+            "label": "PROPER_NOUN"
+          }
+        ],
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "summary": "O Ministério da Saúde lançou uma campanha nacional para aumentar a vacinação contra a gripe durante o inverno"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "T04",
+      "type": "review",
+      "language_hint": "es",
+      "text": "El teléfono tiene una cámara excelente y la batería dura todo el día, pero la aplicación se bloquea con demasiada frecuencia.",
+      "analysis": {
+        "language": "es",
+        "language_confidence": 0.65,
+        "entities": [
+          {
+            "text": "El",
+            "label": "PROPER_NOUN"
+          }
+        ],
+        "sentiment": "mixed",
+        "sentiment_score": 0.0,
+        "summary": "El teléfono tiene una cámara excelente y la batería dura todo el día, pero la aplicación se bloquea con demasiada frecue..."
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "T05",
+      "type": "review",
+      "language_hint": "en",
+      "text": "The coffee maker looks beautiful and heats quickly. Customer support replaced the damaged carafe without any trouble.",
+      "analysis": {
+        "language": "en",
+        "language_confidence": 0.65,
+        "entities": [
+          {
+            "text": "The",
+            "label": "PROPER_NOUN"
+          },
+          {
+            "text": "Customer",
+            "label": "PROPER_NOUN"
+          }
+        ],
+        "sentiment": "mixed",
+        "sentiment_score": 0.0,
+        "summary": "The coffee maker looks beautiful and heats quickly. Customer support replaced the damaged carafe without any trouble"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "T06",
+      "type": "review",
+      "language_hint": "fr",
+      "text": "Le sac est léger et très pratique, mais la fermeture éclair semble fragile après seulement deux semaines.",
+      "analysis": {
+        "language": "fr",
+        "language_confidence": 0.65,
+        "entities": [
+          {
+            "text": "Le",
+            "label": "PROPER_NOUN"
+          }
+        ],
+        "sentiment": "negative",
+        "sentiment_score": -0.75,
+        "summary": "Le sac est léger et très pratique, mais la fermeture éclair semble fragile après seulement deux semaines"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "T07",
+      "type": "email",
+      "language_hint": "es",
+      "text": "Hola Marta, ¿podrías enviar el informe de ventas a Carlos antes del viernes? Necesitamos revisar el presupuesto de Q4.",
+      "analysis": {
+        "language": "es",
+        "language_confidence": 0.65,
+        "entities": [
+          {
+            "text": "Hola Marta",
+            "label": "PROPER_NOUN"
+          },
+          {
+            "text": "Carlos",
+            "label": "PROPER_NOUN"
+          },
+          {
+            "text": "Necesitamos",
+            "label": "PROPER_NOUN"
+          },
+          {
+            "text": "Q4",
+            "label": "PROPER_NOUN"
+          }
+        ],
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "summary": "Hola Marta, ¿podrías enviar el informe de ventas a Carlos antes del viernes? Necesitamos revisar el presupuesto de Q4"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "T08",
+      "type": "email",
+      "language_hint": "en",
+      "text": "Hi team, our meeting with Acme Corp is moved to Thursday at 10:00. Please bring the updated proposal and pricing sheet.",
+      "analysis": {
+        "language": "en",
+        "language_confidence": 0.65,
+        "entities": [
+          {
+            "text": "Hi",
+            "label": "PROPER_NOUN"
+          },
+          {
+            "text": "Acme Corp",
+            "label": "PROPER_NOUN"
+          },
+          {
+            "text": "Thursday",
+            "label": "PROPER_NOUN"
+          },
+          {
+            "text": "Please",
+            "label": "PROPER_NOUN"
+          }
+        ],
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "summary": "Hi team, our meeting with Acme Corp is moved to Thursday at 10:00. Please bring the updated proposal and pricing sheet"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "T09",
+      "type": "email",
+      "language_hint": "de",
+      "text": "Guten Morgen Anna, bitte sende den unterschriebenen Vertrag an die Rechtsabteilung und bestätige den Eingang.",
+      "analysis": {
+        "language": "de",
+        "language_confidence": 0.65,
+        "entities": [
+          {
+            "text": "Guten Morgen Anna",
+            "label": "PROPER_NOUN"
+          },
+          {
+            "text": "Vertrag",
+            "label": "PROPER_NOUN"
+          },
+          {
+            "text": "Rechtsabteilung",
+            "label": "PROPER_NOUN"
+          },
+          {
+            "text": "Eingang",
+            "label": "PROPER_NOUN"
+          }
+        ],
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "summary": "Guten Morgen Anna, bitte sende den unterschriebenen Vertrag an die Rechtsabteilung und bestätige den Eingang"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "T10",
+      "type": "news",
+      "language_hint": "es",
+      "text": "La Universidad de Barcelona presentó un laboratorio de inteligencia artificial dirigido por la investigadora Laura Pérez.",
+      "analysis": {
+        "language": "es",
+        "language_confidence": 0.65,
+        "entities": [
+          {
+            "text": "La Universidad",
+            "label": "PROPER_NOUN"
+          },
+          {
+            "text": "Barcelona",
+            "label": "PROPER_NOUN"
+          },
+          {
+            "text": "Laura Pérez",
+            "label": "PROPER_NOUN"
+          }
+        ],
+        "sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "summary": "La Universidad de Barcelona presentó un laboratorio de inteligencia artificial dirigido por la investigadora Laura Pérez..."
+      },
+      "mode": "mock"
+    }
+  ]
+}

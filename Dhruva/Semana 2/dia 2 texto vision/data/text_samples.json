@@ -1,0 +1,62 @@
+[
+  {
+    "id": "T01",
+    "type": "news",
+    "language_hint": "es",
+    "text": "La alcaldesa de Madrid anunció ayer un nuevo plan de movilidad eléctrica para reducir las emisiones en un 30% antes de 2030."
+  },
+  {
+    "id": "T02",
+    "type": "news",
+    "language_hint": "en",
+    "text": "The European Space Agency confirmed that its climate satellite will begin collecting ocean temperature data next month."
+  },
+  {
+    "id": "T03",
+    "type": "news",
+    "language_hint": "pt",
+    "text": "O Ministério da Saúde lançou uma campanha nacional para aumentar a vacinação contra a gripe durante o inverno."
+  },
+  {
+    "id": "T04",
+    "type": "review",
+    "language_hint": "es",
+    "text": "El teléfono tiene una cámara excelente y la batería dura todo el día, pero la aplicación se bloquea con demasiada frecuencia."
+  },
+  {
+    "id": "T05",
+    "type": "review",
+    "language_hint": "en",
+    "text": "The coffee maker looks beautiful and heats quickly. Customer support replaced the damaged carafe without any trouble."
+  },
+  {
+    "id": "T06",
+    "type": "review",
+    "language_hint": "fr",
+    "text": "Le sac est léger et très pratique, mais la fermeture éclair semble fragile après seulement deux semaines."
+  },
+  {
+    "id": "T07",
+    "type": "email",
+    "language_hint": "es",
+    "text": "Hola Marta, ¿podrías enviar el informe de ventas a Carlos antes del viernes? Necesitamos revisar el presupuesto de Q4."
+  },
+  {
+    "id": "T08",
+    "type": "email",
+    "language_hint": "en",
+    "text": "Hi team, our meeting with Acme Corp is moved to Thursday at 10:00. Please bring the updated proposal and pricing sheet."
+  },
+  {
+    "id": "T09",
+    "type": "email",
+    "language_hint": "de",
+    "text": "Guten Morgen Anna, bitte sende den unterschriebenen Vertrag an die Rechtsabteilung und bestätige den Eingang."
+  },
+  {
+    "id": "T10",
+    "type": "news",
+    "language_hint": "es",
+    "text": "La Universidad de Barcelona presentó un laboratorio de inteligencia artificial dirigido por la investigadora Laura Pérez."
+  }
+]

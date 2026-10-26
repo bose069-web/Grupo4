@@ -1,0 +1,125 @@
+{
+  "model": "gemini-2.5-flash",
+  "mode": "mock",
+  "image_count": 5,
+  "comparison": [
+    {
+      "type": "document",
+      "count": 2,
+      "average_confidence": 0.92
+    },
+    {
+      "type": "indoor",
+      "count": 1,
+      "average_confidence": 0.8
+    },
+    {
+      "type": "product",
+      "count": 1,
+      "average_confidence": 0.9
+    },
+    {
+      "type": "urban",
+      "count": 1,
+      "average_confidence": 0.86
+    }
+  ],
+  "results": [
+    {
+      "id": "I01",
+      "path": "assets/test_images/01_invoice.png",
+      "type": "document",
+      "task": "OCR, scene classification, and object detection",
+      "mime_type": "image/png",
+      "analysis": {
+        "ocr_text": "INVOICE 1042 | Total: $249.00 | Due: 2026-09-30",
+        "scene": "scanned document",
+        "objects": [
+          "invoice",
+          "text",
+          "table"
+        ],
+        "description": "A scanned invoice with a structured table and a total amount.",
+        "confidence": 0.92
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "I02",
+      "path": "assets/test_images/02_urban.png",
+      "type": "urban",
+      "task": "scene classification and object detection",
+      "mime_type": "image/png",
+      "analysis": {
+        "ocr_text": "",
+        "scene": "urban street",
+        "objects": [
+          "buildings",
+          "road",
+          "traffic light",
+          "trees"
+        ],
+        "description": "A city street with buildings, a road, trees, and traffic infrastructure.",
+        "confidence": 0.86
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "I03",
+      "path": "assets/test_images/03_product.png",
+      "type": "product",
+      "task": "product description, OCR, and object detection",
+      "mime_type": "image/png",
+      "analysis": {
+        "ocr_text": "ORBIT MUG",
+        "scene": "product photo",
+        "objects": [
+          "mug",
+          "table",
+          "label"
+        ],
+        "description": "A ceramic mug presented as a product on a plain surface.",
+        "confidence": 0.9
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "I04",
+      "path": "assets/test_images/04_receipt.png",
+      "type": "document",
+      "task": "OCR and object detection",
+      "mime_type": "image/png",
+      "analysis": {
+        "ocr_text": "INVOICE 1042 | Total: $249.00 | Due: 2026-09-30",
+        "scene": "scanned document",
+        "objects": [
+          "invoice",
+          "text",
+          "table"
+        ],
+        "description": "A scanned invoice with a structured table and a total amount.",
+        "confidence": 0.92
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "I05",
+      "path": "assets/test_images/05_workspace.png",
+      "type": "indoor",
+      "task": "scene classification and object detection",
+      "mime_type": "image/png",
+      "analysis": {
+        "ocr_text": "",
+        "scene": "indoor scene",
+        "objects": [
+          "desk",
+          "lamp",
+          "chair"
+        ],
+        "description": "An indoor workspace with common office objects.",
+        "confidence": 0.8
+      },
+      "mode": "mock"
+    }
+  ]
+}
