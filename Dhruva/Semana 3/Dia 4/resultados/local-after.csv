@@ -1,0 +1,4 @@
+backend,scenario,concurrency,total_requests,successful_requests,errors,error_rate_percent,latency_ms_avg,latency_ms_p50,latency_ms_p95,tokens_per_second_avg,client_cpu_percent_avg,client_ram_mb_delta
+local-after,5_usuarios,5,5,5,0,0.0,19316.96,19019.61,31996.17,2.26,43.85,0.34
+local-after,10_usuarios,10,10,10,0,0.0,8.02,7.22,10.7,4146.74,21.6,0.12
+local-after,20_usuarios,20,20,20,0,0.0,14.42,13.92,19.14,2289.65,0.3,0.23

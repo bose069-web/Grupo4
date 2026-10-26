@@ -1,0 +1,32 @@
+services:
+
+  # Ollama con el modelo Gemma 4 E4B
+  ollama:
+    image: ollama/ollama
+    ports:
+      - "11435:11434"            # puerto 11435 de tu PC -> 11434 del contenedor
+    volumes:
+      - modelos:/root/.ollama    # el modelo se guarda aquí y no se pierde
+    networks:
+      - red_chat
+    # Arranca Ollama, espera a que responda y descarga el modelo (solo la 1ª vez)
+    entrypoint: ["/bin/sh", "-c", "ollama serve & until ollama list >/dev/null 2>&1; do sleep 1; done; ollama pull ${MODELO:-gemma4:e4b}; wait"]
+
+  # API Python (Flask)
+  api:
+    build: ./api
+    ports:
+      - "8000:8000"
+    environment:
+      - BACKEND_URL=${BACKEND_URL:-http://ollama:11434}   # local o remoto, se cambia en .env
+      - MODELO=${MODELO:-gemma4:e4b}
+    networks:
+      - red_chat
+    depends_on:
+      - ollama
+
+networks:
+  red_chat:          # red propia: los contenedores se ven por su nombre (ollama, api)
+
+volumes:
+  modelos:           # volumen persistente para los modelos descargados
